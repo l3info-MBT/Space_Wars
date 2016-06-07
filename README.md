@@ -1,6 +1,6 @@
 # Space Wars
 
-<div style="text-align:center"><img src ="http://www.kirikoo.net/images/14Anonyme-20160607-115428.png" /></div>
+ ![Logo Space invaders](http://www.kirikoo.net/images/14Anonyme-20160607-115428.png)
 
 Space Wars est un clone du célébrisime Space Invaders, le jeu est codé en C++ avec une partie réseaux afin de jouer l'un contre l'autre.
 
