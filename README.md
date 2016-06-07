@@ -17,6 +17,7 @@ Space Wars est un clone du célébrisime Space Invaders, le jeu est codé en C++
 Voici une liste non exhaustive des taches qui ont été ou sont encore à accomplir d'ici la fin du projets.
 
 - [x] Création du cahiers des charges.
+- [x] Mise en place du GitHub.
 - [ ] Création du menu d'accueil.
 - [ ] Création de l'interface du jeu.
 - [ ] Création du jeu - Solo.
