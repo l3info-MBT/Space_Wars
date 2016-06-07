@@ -21,9 +21,9 @@ Voici une liste non exhaustive des taches qui ont été ou sont encore à accomp
 - [ ] Implémentation de la partie réseaux (client / serveur).
 - [ ] Création du jeu - JvJ
 
-  Ce projet est un exercice de fin d'année pour notres licences, nous avons donc plusieurs critères à respecter. Nous sommes donc tenu d'utiliser la bibliothèque multimédia SFML *(Version 2.3.2)* ainsi qu'implémenter une partie réseaux à notre jeu.
+  Ce projet est un exercice de fin d'année pour notres licences, nous avons donc plusieurs critères à respecter. Nous sommes donc tenu d'utiliser la bibliothèque multimédia SFML **(Version 2.3.2)** ainsi qu'implémenter une partie réseaux à notre jeu.
 
-  **Les dates du projet sont fixé du 6 Juin au 24 Juin 2016**  
+  *Les dates du projet sont fixé du 6 Juin au 24 Juin 2016* 
 
 ## Les Régles:
 
