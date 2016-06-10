@@ -1,0 +1,13 @@
+#Definitly Not a git ignore
+
+#On ignore les script et les archive
+*.sh
+*.a
+*.txt
+
+#On ignore le dossier Bin et Obj
+bin/
+obj/
+
+#On inclus manuellement nos notes
+!note.txt
