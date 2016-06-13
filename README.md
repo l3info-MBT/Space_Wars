@@ -18,7 +18,7 @@ Voici une liste non exhaustive des taches qui ont été ou sont encore à accomp
 
 - [x] Création du cahiers des charges.
 - [x] Mise en place du GitHub.
-- [ ] Création du menu d'accueil.
+- [x] Création du menu d'accueil.
 - [ ] Création de l'interface du jeu.
 - [ ] Création du jeu - Solo.
 - [ ] Implémentation de la partie réseaux (client / serveur).
