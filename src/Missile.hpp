@@ -12,6 +12,8 @@ private:
 public:
   sf::Texture missile;
   sf::Sprite ajouterMissile(sf::Sprite sp, float posMissileX, float posMissileY);
+  
+  sf::Sprite supprimerMissile(sf::Sprite sp);
 };
 
 #endif

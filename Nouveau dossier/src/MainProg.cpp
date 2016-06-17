@@ -7,8 +7,7 @@
 #include "Joueur.hpp"
 #include "Alien.hpp"
 #include "Bouclier.hpp"
-#include "Missile.hpp"
-//#include "Colision.hpp"
+
 
 int main()
 {  
@@ -20,7 +19,6 @@ int main()
   Joueur joueur;
   Alien ali;
   Bouclier boucli;
-  Missile miss;
   
   // Ligne en dessous de score
   sf::RectangleShape border;
@@ -54,39 +52,34 @@ int main()
   int boool = 1, depVaisseauX = 0, cpt1;//, cpt2;
   int depBoucli = 80; // déplacement des boucliers
   int depAlienX = 0, depAlienY = -50, depHorizontal = 0, ok = 5;
-  int depMissileY = 525, depMissileX = 0, missileOk = 2;
 
   
   std::vector<sf::Sprite> vecteurAlien;
   sf::Sprite tabAlien[5][11];
   sf::Sprite tabAlienBis[5][11];
-  sf::Sprite tabBouclier[3][16];
   //  int tabIndiceX[5][11], tabIndiceY[5][11];
 
   // boucliers
-  /*** SF::FLOATRECT rec(positionX, positionY, tailleX, tailleY); ***/
+    
   // bouclier 1
-  sf::Sprite spriteVaisseau, spriteMissile, spriteMissile2, bou101, bou102, bou103, bou104, bou105,bou106, bou107, 
-    bou108, bou109, bou110, bou111, bou112, bou113, bou114, bou115,bou116,
+  sf::Sprite spriteVaisseau, bou101, bou102, bou103, bou104, bou105,bou106, bou107,
+    bou108, bou109, bou110, bou111, bou112, bou113, bou114,
+    bou115,bou116, bou117, bou118, bou119, bou120,
 
     // bouclier 2
     bou201, bou202, bou203, bou204, bou205,bou206, bou207,
-    bou208, bou209, bou210, bou211, bou212, bou213, bou214, bou215,bou216,
+    bou208, bou209, bou210, bou211, bou212, bou213, bou214,
+    bou215,bou216, bou217, bou218, bou219, bou220,
 
     // bouclier 3
     bou301, bou302, bou303, bou304, bou305,bou306, bou307,
-    bou308, bou309, bou310, bou311, bou312, bou313, bou314, bou315,bou316;
+    bou308, bou309, bou310, bou311, bou312, bou313, bou314,
+    bou315,bou316, bou317, bou318, bou319, bou320;
         
   ali.alien.setSmooth(true);
   joueur.vaisseau.setSmooth(true);
   boucli.bouclier.setSmooth(true);
 
-  sf::Sprite sprite;
-  app.draw(sprite);
-    
-
-
-    
   while (app.isOpen())
     {
       sf::Event event;
@@ -106,55 +99,18 @@ int main()
 	      depVaisseauX = depVaisseauX + 10;
 
 	  // tirer avec le vaisseau
-	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	    {
-	      // if(missileOk == 0)
-	      //{
-	      if(missileOk == 2)
-		{
-		  missileOk = 0;
-		  depMissileY = 525;
-		  depMissileX = depVaisseauX;
-		}
-		  //}
-	    }
-	  
-	  // Sprite du vaisseau
+	  // if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	  spriteVaisseau = joueur.ajouterVaisseau(spriteVaisseau, depVaisseauX, 535);
 	  // gérer le missile.
 	  //	  spriteMissile = Miss.ajouterMissile(spriteMissile, depVaisseauX, 525);
 	}
       app.clear();
 
-      if(missileOk == 0)
-	{
-	  spriteMissile = miss.ajouterMissile(spriteMissile, depMissileX + 21, depMissileY);
-	}
       /********************************************************/
       /*** Tous les boucliers sont à mettre dans un tableau ***/
       /********************************************************/
       
       // bouclier 1
-
-      int dix = 0, vingt = 0, quatre = 4;
-      tabBouclier[0][0] = boucli.ajouterBouclier(tabBouclier[0][0], 90 + vingt, 450 + dix);
-      /*for(int j = 0; j < 3; j++)
-	{*/
-      /*	  for(int i = 0; i < 16; i++)
-	    {
-	      tabBouclier[0][i] = boucli.ajouterBouclier(tabBouclier[0][i], 90 + vingt, 450 + dix);
-	      vingt += 20;
-	      app.draw(tabBouclier[0][i]);
-	      
-	      if(i%4)
-		{
-		  dix += 10;
-		  vingt = 0;
-		}
-		}*/
-	  /*	  dix = 0;
-		  }*/
-      
       bou101 = boucli.ajouterBouclier(bou101, 10 + depBoucli, 450);
       bou102 = boucli.ajouterBouclier(bou102, 30 + depBoucli, 450);
       bou103 = boucli.ajouterBouclier(bou103, 50 + depBoucli, 450);
@@ -228,7 +184,7 @@ int main()
       app.draw(bou310);app.draw(bou311);app.draw(bou312);
       app.draw(bou313);app.draw(bou314);app.draw(bou315);
       app.draw(bou316);
-      
+
       // faire une fonction qui retournera les indices du tableau (X et Y) 
       //int testX = 2, testY = 1;
       // aliens
@@ -321,25 +277,9 @@ int main()
 	}
       else
 	depHorizontal += 1;
-      if(depMissileY == 40)
-	{
-	  missileOk = 2;
-	  depMissileY = 40;
-	}
-      else
-	{
-	  depMissileY -= 5;
-	  app.draw(spriteMissile);
-	}
-      
-      app.draw(textVie);
-      app.draw(textScore);
-      app.draw(border);
-      app.draw(spriteVaisseau);
+      app.draw(textVie);app.draw(textScore);app.draw(border);app.draw(spriteVaisseau);
       app.display();
     }
-  //  if(spriteMissile
 }
-//HITBOwwwwwwwwX
 
 

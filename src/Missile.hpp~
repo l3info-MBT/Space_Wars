@@ -1,17 +1,17 @@
-#ifndef BOUCLIER_HPP_
-#define BOUCLIER_HPP_
+#ifndef MISSILE_HPP_
+#define MISSILE_HPP_
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
 //#include "type.h"
 
-class Bouclier
+class Missile
 {
 private:
 public:
-  sf::Texture bouclier;
-  sf::Sprite ajouterBouclier(sf::Sprite sp, float posBouclierX, float posBouclierY);
+  sf::Texture missile;
+  sf::Sprite ajouterMissile(sf::Sprite sp, float posMissileX, float posMissileY);
 };
 
 #endif

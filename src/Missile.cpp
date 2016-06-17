@@ -16,8 +16,15 @@ sf::Sprite Missile::ajouterMissile(sf::Sprite sp, float posMissileX, float posMi
     {
       sp.setTexture(missile);
       sp.setScale(0.5f, 0.5f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(255, 255, 255));
+      sp.setColor(sf::Color(255, 0, 0));
       sp.setPosition(posMissileX, posMissileY);
       return sp;
     }
+}
+
+sf::Sprite Missile::supprimerMissile(sf::Sprite sp)
+{
+  sp.setScale(0.0f, 0.0f);
+  sp.setPosition(0.0f, 0.0f);
+  return sp;
 }
