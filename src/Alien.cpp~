@@ -16,7 +16,7 @@ sf::Sprite Alien::ajouterAlien1_1(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }
@@ -34,10 +34,11 @@ sf::Sprite Alien::ajouterAlien1_2(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }
+
 }
 
 sf::Sprite Alien::ajouterAlien2_1(sf::Sprite sp, float posAlienX, float posAlienY)
@@ -52,7 +53,7 @@ sf::Sprite Alien::ajouterAlien2_1(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }
@@ -70,7 +71,7 @@ sf::Sprite Alien::ajouterAlien2_2(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }
@@ -88,7 +89,7 @@ sf::Sprite Alien::ajouterAlien3_1(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }
@@ -106,7 +107,7 @@ sf::Sprite Alien::ajouterAlien3_2(sf::Sprite sp, float posAlienX, float posAlien
     {
       sp.setTexture(alien);
       sp.setScale(0.3f, 0.3f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(128,128,0));
+      sp.setColor(sf::Color(255,255,255));
       sp.setPosition(posAlienX, posAlienY);
       return sp;
     }

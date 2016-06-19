@@ -8,7 +8,9 @@ class Collision
 {
 private:
 public:
-  bool collisionBouclier(sf::Sprite sp, sf::Sprite sp2);//, sf::Vector2f vecReturn);
+  bool collisionBouclier(sf::Sprite sp, sf::Sprite sp2);
+  bool collisionVaisseau(sf::Sprite sp, sf::Sprite sp2);
+  bool collisionAlien(sf::Sprite sp, sf::Sprite sp2);
   sf::Vector2f getPosition(sf::Sprite sp);
 };
 

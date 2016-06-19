@@ -4,8 +4,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-//#include "type.h"
-
 class Bouclier
 {
 private:

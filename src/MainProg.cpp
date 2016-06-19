@@ -1,21 +1,16 @@
 #include <iostream>
 #include <vector>
-//#include <Rect.hpp>
+#include <random>
+#include <time.h>
 #include <unistd.h>
 #include <SFML/Graphics.hpp>
 
-//#include "type.h"
 #include "Joueur.hpp"
 #include "Alien.hpp"
 #include "Bouclier.hpp"
 #include "Missile.hpp"
 #include "Collision.hpp"
-/*
-sf::Vector2f getPosition(sf::Sprite sp)
-{
-  return sp.getPosition();
-}
-*/
+
 int main()
 {  
   sf::RenderWindow app(sf::VideoMode(600, 600, 32), "Space Wars",sf::Style::Resize | sf::Style::Close | sf::Style::Titlebar);
@@ -28,6 +23,22 @@ int main()
   Bouclier boucli;
   Missile miss;
   Collision col;
+
+  float x = 36.00;
+  float  y = 70.00, yPlus = 45.00;
+  int boool = 1, depVaisseauX = 0, cpt1, depAlienX = 0, depAlienY = -50;
+  int depHorizontal = 0, ok = 5, depMissileY = 525, depMissileX = 0;
+  int missileOk = 2, depMissileAlienX, depMissileAlienY = 0, tireOk = 0;
+  sf::Sprite tabAlien[5][11], tabAlienBis[5][11], tabBouclier[3][16];
+  sf::Sprite spriteVaisseau, spriteMissileVaisseau, spriteMissileAlien;
+  
+  sf::Vector2f vecBou, vecAli, vecVai;
+  
+  int vieJoueur = joueur.getNbVie();
+  sf::Sprite vie1, vie2, vie3;
+  vie1 = joueur.ajouterVaisseau(spriteVaisseau, 440, 5);
+  vie2 = joueur.ajouterVaisseau(spriteVaisseau, 490, 5);
+  vie3 = joueur.ajouterVaisseau(spriteVaisseau, 540, 5);
   
   // Ligne en dessous de score
   sf::RectangleShape border;
@@ -35,6 +46,24 @@ int main()
   border.setPosition(0, 35);
   border.setFillColor(sf::Color(240,248,255));
   
+  bool tabAlienSup[5][11];
+  for(int j = 0; j < 5; j++)
+    {
+      for(int i = 0; i < 11; i++)
+	{
+	  tabAlienSup[j][i] = true;
+	}
+    }
+
+  bool tabBouclierSup[3][16];
+  
+  for(int j = 0; j < 3; j++)
+    {
+      for(int i = 0; i < 16; i++)
+	{
+	  tabBouclierSup[j][i] = true;
+	}
+    }
   //font1 pour afficher le mot Score
   if (!font.loadFromFile("images/fonts.ttf"))
     {
@@ -55,49 +84,43 @@ int main()
       textVie.setColor(sf::Color(0,0,255));
       textVie.setStyle(sf::Text::Bold);
     }
-
-  float x = 36.00;
-  float  y = 70.00, yPlus = 45.00;
-  int boool = 1, depVaisseauX = 0, cpt1;//, cpt2;
-  int depAlienX = 0, depAlienY = -50, depHorizontal = 0, ok = 5;
-  int depMissileY = 525, depMissileX = 0, missileOk = 2;
-  int testX = 2, testY = 5;
-      
-  sf::Sprite tabAlien[5][11];
-  sf::Sprite tabAlienBis[5][11];
-  sf::Sprite tabBouclier[3][16];
-  sf::Vector2f vecBou;
-  //bool tabBouclierSup[3][16];
-  int tabIndiceX[5][11], tabIndiceY[5][11];
   
-  /*  for(int i = 0; i < 3; i++)
-    {
-      for(int j = 0; j < 16; j++)
-	{
-	  tabBouclierSup[i][j] = true;
-	}
-    }
-  */
-  
-  // boucliers
-  // bouclier 1
-  sf::Sprite spriteVaisseau, spriteMissile;
-
-
-        
   ali.alien.setSmooth(true);
   joueur.vaisseau.setSmooth(true);
   boucli.bouclier.setSmooth(true);
 
-  sf::Sprite sprite;
-  app.draw(sprite);
-    
-
-
-    
+  int jeuFini = 0;
+      
   while (app.isOpen())
     {
+      if(vieJoueur == 0)
+	return 0;
+      for(int j = 0; j < 5; j++)
+	{
+	  for(int i = 0; i < 11; i++)
+	    {
+	      if(tabAlienSup[j][i] == false)
+		jeuFini += 1;
+	    }
+	}
+
+      if(jeuFini == 55)
+	return 0;
+      else
+	jeuFini = 0;
+
+      
+      // random de 1 à 11 pour choisir aléatoirement quel alien dans la rangée horizontal va tirer
+      int randomAlienTireX = rand()%11+1;
+  
+      // random de 1 à 5 pour choisir aléatoirement quel alien dans la rangée vertical va tirer
+      int randomAlienTireY = rand()%5+1;
+					  
+      // random de 1 à 2, pour que ça tire de façon aléatoire
+      int randomAlienMissile = rand()%2+1;
+      
       sf::Event event;
+	  
       while (app.pollEvent(event))
 	{
 	  if (event.type == sf::Event::Closed)
@@ -129,10 +152,42 @@ int main()
       spriteVaisseau = joueur.ajouterVaisseau(spriteVaisseau, depVaisseauX, 535);
       app.clear();
 
-      if(missileOk == 0)
+      // vies du vaisseau
+      switch(vieJoueur)
 	{
-	  spriteMissile = miss.ajouterMissile(spriteMissile, depMissileX + 21, depMissileY);
+	case 3:
+	  app.draw(vie1);app.draw(vie2);app.draw(vie3);break;
+	case 2:
+	  app.draw(vie1);app.draw(vie2);break;
+	case 1:
+	  app.draw(vie1);break;
+	case 0:
+	  std::cout << "!!!!! GAME OVER !!!!!" << std::endl;break;
 	}
+      
+      if(randomAlienMissile == 1)
+	{
+	  if(tireOk == 2)
+	    {
+	      tireOk = 0;
+	      depMissileAlienX = (x*(randomAlienTireX))+depAlienX-8;
+	      depMissileAlienY = (y+yPlus*(randomAlienTireY))+depAlienY+45;
+	    }
+	}
+
+      if(col.collisionVaisseau(spriteVaisseau, spriteMissileAlien))
+	{
+	  spriteMissileAlien = miss.supprimerMissile(spriteMissileAlien);
+	  std::cout << "IMPACT missile alien - vaisseau" << std::endl;
+	  vieJoueur -= 1;
+	  sleep(1);
+	  tireOk = 2;
+	}
+      
+      if(missileOk == 0)
+	spriteMissileVaisseau = miss.ajouterMissileVaisseau(spriteMissileVaisseau, depMissileX + 21, depMissileY); 
+      if(tireOk == 0)
+	spriteMissileAlien = miss.ajouterMissileAlien(spriteMissileAlien, depMissileAlienX + 21, depMissileAlienY);
       
       // boucliers
       int dix = 450, vingt = 90, quatre = 0;
@@ -140,11 +195,11 @@ int main()
 	{
 	  for(int i = 0; i < 16; i++)
 	    {
-	      /*if(tabBouclierSup[i][j] == true)
-		{*/
+	      if(tabBouclierSup[j][i] == true)
+		{
 		  tabBouclier[j][i] = boucli.ajouterBouclier(tabBouclier[j][i], vingt + 160 * j, dix);
 		  app.draw(tabBouclier[j][i]);
-		  //	}
+		}
 	      vingt = vingt + 20; quatre = quatre + 1;
 	      if(vingt == 170)
 		vingt = 90;
@@ -153,102 +208,116 @@ int main()
 		  dix = dix + 10;
 		  quatre = 0;
 		}
-	      if(col.collisionBouclier(tabBouclier[j][i], spriteMissile))
+	      if(col.collisionBouclier(tabBouclier[j][i], spriteMissileVaisseau))
 		{
 		  vecBou = boucli.getPosition(tabBouclier[j][i]);
-		  std::cout << "IMPACT" << std::endl;
-
-		  // missile
-		  // si missile.y == bouclier.y-10)
-		  if(vecBou.y+10 == depMissileY)
+		  if(vecBou.y + 10 == depMissileY)
 		    {
-		      spriteMissile = miss.supprimerMissile(spriteMissile);
+		      spriteMissileVaisseau = miss.supprimerMissile(spriteMissileVaisseau);
+		      std::cout << "IMPACT missile vaisseau - bouclier" <<std::endl;
+		      tabBouclier[j][i] = miss.supprimerMissile(tabBouclier[j][i]);
+		      tabBouclierSup[j][i] = false;
 		      missileOk = 2;
 		    }
-		  
-		  // bouclier
-		  /*if(tabBouclierSup[i][j] == true)
-		  {
-		    tabBouclierSup[i][j] = false;
-		    tabBouclier[j][i] = boucli.supprimerBouclier(tabBouclier[j][i]);
-		    }*/
 		}
+	      if(col.collisionBouclier(tabBouclier[j][i], spriteMissileAlien))
+		{
+		  spriteMissileAlien = miss.supprimerMissile(spriteMissileAlien);
+		  std::cout << "IMPACT missile alien - bouclier" << std::endl;
+		  tabBouclier[j][i] = miss.supprimerMissile(tabBouclier[j][i]);
+		  tabBouclierSup[j][i] = false;
+		  tireOk = 2;
+		}
+	   
 	    }
 	  dix = 450;
 	  vingt = 90;
 	}
-      // faire une fonction qui retournera les indices du tableau (X et Y) 
+      
       // aliens
+      for(int j = 0; j < 5; j++)
+	{
+	  for(int i = 0; i < 11; i++)
+	    {
+	      // Colision missile alien - alien
+	      if(col.collisionAlien(tabAlien[j][i], spriteMissileAlien))
+		{
+		  vecAli = ali.getPosition(tabAlien[j][i]);
+		  if(vecAli.y + 20 == depMissileAlienY)
+		    {
+		      spriteMissileAlien = miss.supprimerMissile(spriteMissileAlien);
+		      std::cout << "IMPACT missile alien - alien" <<std::endl;
+		      tireOk = 2;
+		    }
+		}
+	      
+	      // Colision missile vaisseau - alien
+	      if(col.collisionAlien(tabAlien[j][i], spriteMissileVaisseau))
+		{
+		  vecVai = ali.getPosition(tabAlien[j][i]);
+		  if(vecVai.y + 20 == depMissileY)
+		    {
+		      tabAlienSup[j][i] = false;
+		      spriteMissileVaisseau = miss.supprimerMissile(spriteMissileVaisseau);
+		      std::cout << "IMPACT missile vaisseau - alien" <<std::endl;
+		      tabAlien[j][i] = miss.supprimerMissile(tabAlien[j][i]);
+		      tabAlienBis[j][i] = miss.supprimerMissile(tabAlienBis[j][i]);
+		      missileOk = 2;
+		    }
+		}
+	    }
+	}
+      
       if(boool > 50)
 	{
 	  for(cpt1 = 0; cpt1 < 11; cpt1++)
 	    {
-	      tabAlien[0][cpt1] = ali.ajouterAlien1_1(tabAlien[0][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*5)+depAlienY); // alien 1
-	      app.draw(tabAlien[0][cpt1]);
-	      if(0 != testX && cpt1 != testY) // eliminer alien à compléter
-		if(testX != x*(cpt1+1) && testY != y+yPlus*5)
-		  {
-		    tabIndiceX[0][cpt1] = x*(cpt1+1);
-		    tabIndiceY[0][cpt1] = y+yPlus*5;
-		  }
-
-	      // alien 2
-	      tabAlien[1][cpt1] = ali.ajouterAlien1_1(tabAlien[1][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*4)+depAlienY);
-	      app.draw(tabAlien[1][cpt1]);
-
-	      //col.collisionAlien(sdsdfsdf)
+	      if(tabAlienSup[0][cpt1] == true)
+		// alien ligne 1 (en partant du bas)
+		tabAlien[0][cpt1] = ali.ajouterAlien1_1(tabAlien[0][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*5)+depAlienY);app.draw(tabAlien[0][cpt1]);
 	      
-	      // alien 3
-	      tabAlien[2][cpt1] = ali.ajouterAlien2_1(tabAlien[2][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*3)+depAlienY); 
-	      app.draw(tabAlien[2][cpt1]);
+	      if(tabAlienSup[1][cpt1] == true)
+		// alien ligne 2 (en partant du bas)
+		tabAlien[1][cpt1] = ali.ajouterAlien1_1(tabAlien[1][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*4)+depAlienY);app.draw(tabAlien[1][cpt1]);
+	     
+	      if(tabAlienSup[2][cpt1] == true)
+		// alien ligne 3 (en partant du bas)
+		tabAlien[2][cpt1] = ali.ajouterAlien2_1(tabAlien[2][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*3)+depAlienY);app.draw(tabAlien[2][cpt1]);
 
-	       // alien 4
-	      tabAlien[3][cpt1] = ali.ajouterAlien2_1(tabAlien[3][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*2)+depAlienY);
-	      app.draw(tabAlien[3][cpt1]);
+	      if(tabAlienSup[3][cpt1] == true)
+		// alien ligne 4 (en partant du bas)
+		tabAlien[3][cpt1] = ali.ajouterAlien2_1(tabAlien[3][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*2)+depAlienY);app.draw(tabAlien[3][cpt1]);
 
-	      // alien 5
-	      tabAlien[4][cpt1] = ali.ajouterAlien3_1(tabAlien[4][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*1)+depAlienY);
-	      app.draw(tabAlien[4][cpt1]);
+	      if(tabAlienSup[4][cpt1] == true)
+		// alien ligne 5 (en partant du bas)
+		tabAlien[4][cpt1] = ali.ajouterAlien3_1(tabAlien[4][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*1)+depAlienY);app.draw(tabAlien[4][cpt1]);
 	    }
 	}else if(boool < 50)
 	{	  
 	  for(cpt1 = 0; cpt1 < 11; cpt1++)
 	    {
-	      tabAlienBis[0][cpt1] = ali.ajouterAlien1_2(tabAlienBis[0][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*5)+depAlienY); // alien 1 bis
-	      app.draw(tabAlienBis[0][cpt1]);
-	      
-	      tabAlienBis[1][cpt1] = ali.ajouterAlien1_2(tabAlienBis[1][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*4)+depAlienY); // alien 2 bis
-	      app.draw(tabAlienBis[1][cpt1]);
+	      if(tabAlienSup[0][cpt1] == true)
+		// alien 1 bis (en partant du bas)
+		tabAlienBis[0][cpt1] = ali.ajouterAlien1_2(tabAlienBis[0][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*5)+depAlienY);app.draw(tabAlienBis[0][cpt1]);
 
-	      tabAlienBis[2][cpt1] = ali.ajouterAlien2_2(tabAlienBis[2][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*3)+depAlienY); // alien 3 bis
-	      app.draw(tabAlienBis[2][cpt1]);
-		
-	      tabAlienBis[3][cpt1] = ali.ajouterAlien2_2(tabAlienBis[3][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*2)+depAlienY); // alien 4 bis
-	      app.draw(tabAlienBis[3][cpt1]);
+	      if(tabAlienSup[1][cpt1] == true)
+		// alien 2 bis (en partant du bas)
+		tabAlienBis[1][cpt1] = ali.ajouterAlien1_2(tabAlienBis[1][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*4)+depAlienY);app.draw(tabAlienBis[1][cpt1]);
 
-	      tabAlienBis[4][cpt1] = ali.ajouterAlien3_2(tabAlienBis[4][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*1)+depAlienY); // alien 5 bis
-	      app.draw(tabAlienBis[4][cpt1]);
+	      if(tabAlienSup[2][cpt1] == true)
+		// alien 3 bis (en partant du bas)
+		tabAlienBis[2][cpt1] = ali.ajouterAlien2_2(tabAlienBis[2][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*3)+depAlienY);app.draw(tabAlienBis[2][cpt1]);
+
+	      if(tabAlienSup[3][cpt1] == true)
+		// alien 4 bis (en partant du bas)
+		tabAlienBis[3][cpt1] = ali.ajouterAlien2_2(tabAlienBis[3][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*2)+depAlienY);app.draw(tabAlienBis[3][cpt1]);
+
+	      if(tabAlienSup[4][cpt1] == true)
+		// alien 5 bis (en partant du bas)
+		tabAlienBis[4][cpt1] = ali.ajouterAlien3_2(tabAlienBis[4][cpt1], (x*(cpt1+1))+depAlienX, (y+yPlus*1)+depAlienY);app.draw(tabAlienBis[4][cpt1]);
 	    }
 	}
 
-      // test d'élimination de l'alien placé en 2 - 5.
-
-      for(cpt1 = 0; cpt1 < 5; cpt1++)
-	{
-	  for(int cpt2 = 0; cpt2 < 11; cpt2++)
-	    {
-	      if(tabIndiceX[cpt1][cpt2] == testX && tabIndiceY[cpt1][cpt2] == testY)
-		{
-		  //effacer tabAlien[cpt1][cpt2]
-		  tabAlien[cpt1][cpt2] = ali.supprimerAlien(tabAlien[cpt1][cpt2]);
-		  app.draw(tabAlien[cpt1][cpt2]);
-		  
-		  //effacer tabAlienBis[cpt1][cpt2]:
-		  tabAlienBis[cpt1][cpt2] = ali.supprimerAlien(tabAlienBis[cpt1][cpt2]);
-		  app.draw(tabAlienBis[cpt1][cpt2]);
-		}
-	    }
-	}
       // fin test.
       if (boool == 100)
 	boool = 0;
@@ -263,7 +332,18 @@ int main()
       else
 	{
 	  depMissileY -= 5;
-	  app.draw(spriteMissile);
+	  app.draw(spriteMissileVaisseau);
+	}
+      
+      if(depMissileAlienY == 600)
+	{
+	  tireOk = 2;
+	  depMissileAlienY = 600;
+	}
+      else
+	{
+	  depMissileAlienY += 1;
+	  app.draw(spriteMissileAlien);
 	}
       
       if (depHorizontal == 50)
@@ -271,13 +351,31 @@ int main()
 	  if(depAlienX > 130)
 	    {
 	      if(ok != 5)
-		depAlienY += 10;
+		{
+		  depAlienY += 10;
+		  // si la vague descend trop
+		  if(depAlienY == 140)
+		    {
+		      // le vaisseau perd 1 point de vie.
+		      vieJoueur -= 1; 
+		      depAlienY -= 40;
+		    }
+		}
 	      ok = 1;
 	    }
 	  if(depAlienX == 0)
 	    {
 	      if(ok != 5)
-		depAlienY += 10;
+		{
+		  depAlienY += 10;
+		  // si la vague descend trop
+		  if(depAlienY == 140)
+		    {
+		      // le vaisseau perd 1 point de vie.
+		      vieJoueur -= 1; 
+		      depAlienY -= 40;
+		    }
+		}
 	      ok = 0;
 	    }
 
@@ -297,8 +395,4 @@ int main()
       app.draw(spriteVaisseau);
       app.display();
     }
-  //  if(spriteMissile
 }
-//HITBOwwwwwwwwX
-
-

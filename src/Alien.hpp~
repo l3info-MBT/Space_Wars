@@ -17,6 +17,7 @@ public:
   sf::Sprite ajouterAlien2_2(sf::Sprite sp, float posAlienX, float posAlienY);
   sf::Sprite ajouterAlien3_1(sf::Sprite sp, float posAlienX, float posAlienY);
   sf::Sprite ajouterAlien3_2(sf::Sprite sp, float posAlienX, float posAlienY);
+  sf::Sprite supprimerAlien(sf::Sprite sp);
 };
 
 #endif

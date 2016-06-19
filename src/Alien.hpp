@@ -4,8 +4,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-//#include "type.h"
-
 class Alien
 {
 private:
@@ -18,6 +16,7 @@ public:
   sf::Sprite ajouterAlien3_1(sf::Sprite sp, float posAlienX, float posAlienY);
   sf::Sprite ajouterAlien3_2(sf::Sprite sp, float posAlienX, float posAlienY);
   sf::Sprite supprimerAlien(sf::Sprite sp);
+  sf::Vector2f getPosition(sf::Sprite sp);
 };
 
 #endif

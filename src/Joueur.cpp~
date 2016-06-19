@@ -35,7 +35,7 @@ sf::Sprite Joueur::ajouterVaisseau(sf::Sprite sp, float posVaisseauX, float posV
     {
       sp.setTexture(vaisseau);
       sp.setScale(0.5f, 0.5f);    //setScale peut changer la taille
-      sp.setColor(sf::Color(0,255,255));
+      sp.setColor(sf::Color(0,255,0));
       sp.setPosition(posVaisseauX, posVaisseauY);
       return sp;
     }
