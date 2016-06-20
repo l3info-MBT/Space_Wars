@@ -8,8 +8,9 @@ class Joueur
 {
 private:
 public:
-  sf::Texture vaisseau;
+  sf::Texture vaisseau, vaisseau_explose;
   sf::Sprite ajouterVaisseau(sf::Sprite sp, float posX, float posY);
+  sf::Sprite vaisseauExplose(sf::Sprite sp, float posX, float posY);
   int getNbVie();
 };
 
