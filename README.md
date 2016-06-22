@@ -24,12 +24,20 @@ Voici une liste non exhaustive des taches qui ont été ou sont encore à accomp
 
 Ce projet est un exercice de fin d'année pour notres licences, nous avons donc plusieurs critères à respecter. Nous sommes donc tenu d'utiliser la bibliothèque multimédia SFML **(Version 2.3.2)** ainsi qu'implémenter une partie réseaux à notre jeu.
 
+<<<<<<< HEAD
 *Les dates du projet sont fixé du 6 Juin au 24 Juin 2016*
 
 ## Les Régles:
 
 Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est de détruire des vagues d’aliens au moyen d’un missile en se déplaçant horizontalement sur l’écran. Ce jeu fait parti des classiques du jeu vidéo au même titre que Pac-Man et
 d’autres de ses contemporains.
+=======
+*Les dates du projet sont fixées du 6 Juin au 24 Juin 2016*
+
+## Les Régles:
+
+Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est de détruire des vagues d’aliens au moyen d’un missile en se déplaçant horizontalement sur l’écran. Ce jeu fait parti des classiques du jeu vidéo au même titre que Pac-Man et d’autres de ses contemporains.
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
 
 	— Le jeu commence avec un vaisseau qui a 3 points de vie et une vague de 5 x 11,
 	  soit 55 aliens.
@@ -39,7 +47,11 @@ d’autres de ses contemporains.
 
 	— Le vaisseau tire des laser très rapide.
 
+<<<<<<< HEAD
 	— Un seul laser du vaisseau peu être présent sur la carte à la fois, ce qui veut dire
+=======
+	— Un seul laser du vaisseau peut être présent sur la carte à la fois, ce qui veut dire
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
 	  que pour tirer un laser, le précédent (si existant) doit être détruit.
 
 	— La vague d’ennemis se déplace horizontalement et descend petit à petit.
@@ -58,6 +70,7 @@ d’autres de ses contemporains.
 	  de haut en bas. Les missiles progressent uniquement verticalement et ne peuvent
 	  être déviés.
 
+<<<<<<< HEAD
 	— Les missiles ennemis peuvent être détruits avec un missile du vaisseau.
 
 	— Un alien touché par un missile se voit détruit avec celui-ci.
@@ -76,16 +89,28 @@ d’autres de ses contemporains.
 		— 3e et 4e rang : type 2 -> 20 points.
 		— 5e rang : type 3 -> 50 points.
 		(L'alien bonus se promene horizontalement en haut de l'écran)
+=======
+	— Un alien touché par un missile se voit détruit avec celui-ci.
+
+	— La vague est constituée de 3 types d’aliens:
+		— 1er et 2e rang : type 1 -> 10 points.
+		— 3e et 4e rang : type 2 -> 20 points.
+		— 5e rang : type 3 -> 50 points.
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
 
 	— Si le vaisseau est touché par un missile, le vaisseau perd 1 point de vie et le missile
 	  est détruit.
 
 	— Si un alien est derrière un autre alien, seul celui qui est devant peut tirer.
 
+<<<<<<< HEAD
 	— A la fin de la partie, le perdant aura un malus pour la partie d’après. (sauf en
 	  jeu solo).
 
 	— Conditions de victoire détruire tous les aliens sur la carte.
+=======
+	— Le but du jeu est de détruire tous les aliens sur la carte.
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
 
 ## Contacts:
 
@@ -100,7 +125,11 @@ d’autres de ses contemporains.
 ## Lancement du jeu:
 
   Space Wars fonctionne sur tous système d'exploitation qui possède les dépendances du programme.
+<<<<<<< HEAD
 Il est écrit en C++ et utilise l'API SFML, vous devez donc avoir installé SFML sous sa version 2.3.2 minimale de préférence sur votre machine.
+=======
+Il est écrit en C++ et utilise l'API SFML; vous devez donc avoir installé SFML sous sa version 2.3.2 minimale de préférence sur votre machine.
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
 Il en va de même pour la librairie libboost-dev et pkg-config.
 
 ####Pour un systéme linux:
@@ -121,7 +150,10 @@ make
 Pour lancer le jeu, il vous suffit de faire:
 
 `./bin/main.out`
+<<<<<<< HEAD
 
 ####Pour un systéme windows:
 
 Pour la procédure sur windows, renseignez vou sur le site officiel de la SFML afin d'installer la bibliothéque ainsi que pour la compilation du projet.
+=======
+>>>>>>> 4772b0012161d17496639a6bc13a953a27add034
