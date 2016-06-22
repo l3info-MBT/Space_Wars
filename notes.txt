@@ -1,0 +1,20 @@
+#====================================#
+#=====     Membre du Groupe     =====#
+#====================================#
+
+DEBORGUERE Tony		TEKELI Baris
+TOUAT Malil		QI Zhiwen
+
+#=====================================#
+#=====     Liens des Sources     =====#
+#=====================================#
+
+Musique du Menu par Eric Stiff : Ascending
+Disponible sur: soundcloud.com/eric-skiff/ascending
+
+Police d'écriture par Ænigma :	Vistor
+Disponible sur: dafont.com/fr/visitor.font
+
+#=======================================#
+#=====     Autres Informations     =====#
+#=======================================#
