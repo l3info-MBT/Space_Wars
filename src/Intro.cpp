@@ -23,7 +23,7 @@ void Intro::afficher(sf::RenderWindow &fenetre) {
 
     //Création d'une texture
     sf::Texture intro_texture;
-    if(!intro_texture.loadFromFile("../ressource/intro.png"))
+    if(!intro_texture.loadFromFile("ressource/intro.png"))
     {
         std::cerr<<"L'image d'intro n'as pas pu être charger."<<std::endl;
     }

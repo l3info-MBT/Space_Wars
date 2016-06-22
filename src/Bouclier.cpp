@@ -13,7 +13,7 @@
 sf::Sprite Bouclier::ajouterBouclier(sf::Sprite sp, float posBouclierX, float posBouclierY)
 {
 
-    if (!bouclier.loadFromFile("../ressource/bouclier.png", sf::IntRect(0, 0, 100,100)))
+    if (!bouclier.loadFromFile("ressource/bouclier.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image bouclier"<<std::endl;
         return sp; // On ferme le programme

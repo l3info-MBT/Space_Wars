@@ -4,39 +4,39 @@
 
 sf::RectangleShape Cadre::ajoutercadre1(sf::RectangleShape cadre1,int posx,int posy)
 {
-    cadre.setSize(sf::Vector2f(650, 90));
-    cadre.setPosition(posx,posy);
-    cadre.setFillColor(sf::Color(0,0,0));
+    cadre1.setSize(sf::Vector2f(650, 90));
+    cadre1.setPosition(posx,posy);
+    cadre1.setFillColor(sf::Color(0,0,0));
     return cadre;
 }
 
 sf::RectangleShape Cadre::ajoutercadre2(sf::RectangleShape cadre2,int posx,int posy)
 {
-    cadre.setSize(sf::Vector2f(650, 90));
-    cadre.setPosition(posx,posy);
-    cadre.setFillColor(sf::Color(0,0,0));
+    cadre2.setSize(sf::Vector2f(650, 90));
+    cadre2.setPosition(posx,posy);
+    cadre2.setFillColor(sf::Color(0,0,0));
     return cadre;
 }
 
 sf::RectangleShape Cadre::ajoutercadre3(sf::RectangleShape cadre3,int posx,int posy)
 {
-    cadre.setSize(sf::Vector2f(650, 90));
-    cadre.setPosition(posx,posy);
-    cadre.setFillColor(sf::Color(0,0,0));
+    cadre3.setSize(sf::Vector2f(650, 90));
+    cadre3.setPosition(posx,posy);
+    cadre3.setFillColor(sf::Color(0,0,0));
     return cadre;
 }
 
 sf::RectangleShape Cadre::ajoutercadre4(sf::RectangleShape cadre4,int posx,int posy)
 {
-    cadre.setSize(sf::Vector2f(670,110));
-    cadre.setPosition(posx,posy);
-    cadre.setFillColor(sf::Color(0,0,0));
+    cadre4.setSize(sf::Vector2f(670,110));
+    cadre4.setPosition(posx,posy);
+    cadre4.setFillColor(sf::Color(0,0,0));
     return cadre;
 }
 
 sf::Text Cadre::ajouterterme1(sf::Text textcadre,int posx,int posy,std::string terme)
 {
-    if(!font1.loadFromFile("../ressource/fonts.ttf"))
+    if(!font1.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -56,7 +56,7 @@ sf::Text Cadre::ajouterterme1(sf::Text textcadre,int posx,int posy,std::string t
 
 sf::Text Cadre::ajouterterme2(sf::Text textcadre,int posx,int posy,std::string terme)
 {
-    if(!font2.loadFromFile("../ressource/fonts.ttf"))
+    if(!font2.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -75,7 +75,7 @@ sf::Text Cadre::ajouterterme2(sf::Text textcadre,int posx,int posy,std::string t
 
 sf::Text Cadre::ajouterterme3(sf::Text textcadre,int posx,int posy,std::string terme)
 {
-    if(!font3.loadFromFile("../ressource/fonts.ttf"))
+    if(!font3.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -94,7 +94,7 @@ sf::Text Cadre::ajouterterme3(sf::Text textcadre,int posx,int posy,std::string t
 
 sf::Text Cadre::ajouterterme4(sf::Text textcadre,int posx,int posy,std::string terme)
 {
-    if(!font4.loadFromFile("../ressource/fonts.ttf"))
+    if(!font4.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -113,7 +113,7 @@ sf::Text Cadre::ajouterterme4(sf::Text textcadre,int posx,int posy,std::string t
 
 sf::Text Cadre::ajouterterme5(sf::Text textcadre,int posx,int posy,std::string terme)
 {
-    if(!font5.loadFromFile("../ressource/fonts.ttf"))
+    if(!font5.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -134,7 +134,7 @@ sf::Text Cadre::ajouterterme5(sf::Text textcadre,int posx,int posy,std::string t
 sf::Text Cadre::afficherNom1(sf::Text textcadre,int posx,int posy,std::string Nomreseaux1)
 {
 
-    if(!font6.loadFromFile("../ressource/fonts.ttf"))
+    if(!font6.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -153,7 +153,7 @@ sf::Text Cadre::afficherNom1(sf::Text textcadre,int posx,int posy,std::string No
 sf::Text Cadre::afficherNom2(sf::Text textcadre,int posx,int posy,std::string Nomreseaux2)
 {
 
-    if(!font10.loadFromFile("../ressource/fonts.ttf"))
+    if(!font10.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -172,7 +172,7 @@ sf::Text Cadre::afficherNom2(sf::Text textcadre,int posx,int posy,std::string No
 sf::Text Cadre::afficherNom3(sf::Text textcadre,int posx,int posy,std::string Nomreseaux3)
 {
 
-    if(!font11.loadFromFile("../ressource/fonts.ttf"))
+    if(!font11.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -191,7 +191,7 @@ sf::Text Cadre::afficherNom3(sf::Text textcadre,int posx,int posy,std::string No
 sf::Text Cadre::afficherNomcp(sf::Text textcadre,int posx,int posy,std::string Nomreseaux)
 {
 
-    if(!font16.loadFromFile("../ressource/fonts.ttf"))
+    if(!font16.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -208,22 +208,6 @@ sf::Text Cadre::afficherNomcp(sf::Text textcadre,int posx,int posy,std::string N
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 sf::Text Cadre::nbrconnect1(sf::Text textcadre,int posx,int posy,int nbr1)
 {
     std::stringstream ss;
@@ -231,7 +215,7 @@ sf::Text Cadre::nbrconnect1(sf::Text textcadre,int posx,int posy,int nbr1)
     ss<<nbr1;
     ss>>stringnbr;
     std::string NBR=stringnbr+"/2";
-    if(!font7.loadFromFile("../ressource/fonts.ttf"))
+    if(!font7.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -253,7 +237,7 @@ sf::Text Cadre::nbrconnect2(sf::Text textcadre,int posx,int posy,int nbr2)
     ss<<nbr2;
     ss>>stringnbr;
     std::string NBR=stringnbr+"/2";
-    if(!font12.loadFromFile("../ressource/fonts.ttf"))
+    if(!font12.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -276,7 +260,7 @@ sf::Text Cadre::nbrconnect3(sf::Text textcadre,int posx,int posy,int nbr3)
     ss<<nbr3;
     ss>>stringnbr;
     std::string NBR=stringnbr+"/2";
-    if(!font13.loadFromFile("../ressource/fonts.ttf"))
+    if(!font13.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -299,7 +283,7 @@ sf::Text Cadre::nbrconnectcp(sf::Text textcadre,int posx,int posy,int nbr)
     ss<<nbr;
     ss>>stringnbr;
     std::string NBR=stringnbr+"/2";
-    if(!font19.loadFromFile("../ressource/fonts.ttf"))
+    if(!font19.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -339,7 +323,7 @@ sf::CircleShape Cadre::ajouter_circle(sf::CircleShape Circle,int nbr,int Cx,int 
 sf::Text Cadre::date1(sf::Text textcadre,int posx,int posy,std::string chainedate)
 {
 
-    if(!font9.loadFromFile("../ressource/fonts.ttf"))
+    if(!font9.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -359,7 +343,7 @@ sf::Text Cadre::date1(sf::Text textcadre,int posx,int posy,std::string chainedat
 sf::Text Cadre::date2(sf::Text textcadre,int posx,int posy,std::string chainedate)
 {
 
-    if(!font14.loadFromFile("../ressource/fonts.ttf"))
+    if(!font14.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -378,7 +362,7 @@ sf::Text Cadre::date2(sf::Text textcadre,int posx,int posy,std::string chainedat
 sf::Text Cadre::date3(sf::Text textcadre,int posx,int posy,std::string chainedate)
 {
 
-    if(!font15.loadFromFile("../ressource/fonts.ttf"))
+    if(!font15.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -397,7 +381,7 @@ sf::Text Cadre::date3(sf::Text textcadre,int posx,int posy,std::string chainedat
 sf::Text Cadre::datecp(sf::Text textcadre,int posx,int posy,std::string chainedate)
 {
 
-    if(!font17.loadFromFile("../ressource/fonts.ttf"))
+    if(!font17.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;
@@ -427,7 +411,7 @@ sf::Text Cadre::etat(sf::Text textcadre,int posx,int posy,int nbr)
         resultat="Indisponible";
     }
 
-    if(!font18.loadFromFile("../ressource/fonts.ttf"))
+    if(!font18.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher ../ressource/fonts.ttf"<<std::endl;
         return textcadre;

@@ -1,5 +1,5 @@
 PACKAGES = sfml-all
-CXXFLAGS = -std=c++14 -Wall -Wextra -g 
+CXXFLAGS = -std=c++14 -Wall -g 
 LDFLAGS = 
 LIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 

@@ -68,7 +68,7 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
                 m_solo = m_pause;
                 this->pause(fenetre);
             }
-            if(e.type == sf::Keyboard::Escape)
+            if(e.key.code == sf::Keyboard::Escape)
             {
                 m_solo = m_quitter;
                 return;

@@ -59,15 +59,12 @@ void Jeu::lancerApp() {
             break;
         case m_menu_principale:
             chargerMenuPrincipal();
-            m_etat=m_menu_principale;
             break;
         case m_solo:
             chargerSolo();
-            m_etat=m_menu_principale;
             break;
         case m_menu_reseau:
             chargerMenuReseau();
-            m_etat=m_menu_principale;
             break;
         default:
             std::cout<<"Cas impossible"<<std::endl;

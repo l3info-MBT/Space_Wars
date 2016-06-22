@@ -19,7 +19,7 @@ public:
     ~Intro();
 
     void afficher(sf::RenderWindow& window);
-    const sf::Uint32 getIntroEtat() const {return m_intro_etat;};
+    sf::Uint32 getIntroEtat() const {return m_intro_etat;};
 
     enum Intro_Etat
     {

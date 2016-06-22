@@ -31,7 +31,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
     monclient.recupererListePartie();
 
 //background
-    if (!fond_menu.loadFromFile("../ressource/fond_menu.png"))
+    if (!fond_menu.loadFromFile("ressource/fond_menu.png"))
     {
         std::cout<<"error de charge l'image background"<<std::endl;
         return;
@@ -42,7 +42,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
         menu_background.setTexture(fond_menu);
     }
     //font1 pour afficher "RESEAU DISPONIBLE" qui utilise text1
-    if (!font1.loadFromFile("../ressource/fonts.ttf"))
+    if (!font1.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher fonts.ttf"<<std::endl;
         return;
@@ -57,7 +57,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
         //text1.setStyle(sf::Text::Bold | sf::Text::Underlined);
     }
     //font1 pour afficher "retour" qui utilise text2
-    if (!font2.loadFromFile("../ressource/fonts.ttf"))
+    if (!font2.loadFromFile("ressource/fonts.ttf"))
     {
         std::cout<<"Erreur durant le chargement de ficher fonts.ttf"<<std::endl;
         return;

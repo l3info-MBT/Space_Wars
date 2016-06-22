@@ -13,7 +13,7 @@
 sf::Sprite Alien::ajouterAlien1_1(sf::Sprite sp, float posAlienX, float posAlienY)
 {
 
-    if (!alien.loadFromFile("../ressource/alien1_1.png", sf::IntRect(0, 0, 100,100)))
+    if (!alien.loadFromFile("ressource/alien1_1.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme
@@ -31,7 +31,7 @@ sf::Sprite Alien::ajouterAlien1_1(sf::Sprite sp, float posAlienX, float posAlien
 
 sf::Sprite Alien::ajouterAlien1_2(sf::Sprite sp, float posAlienX, float posAlienY)
 {
-    if (!alien.loadFromFile("../ressource/alien1_2.png", sf::IntRect(0, 0, 100,100)))
+    if (!alien.loadFromFile("ressource/alien1_2.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme
@@ -50,7 +50,7 @@ sf::Sprite Alien::ajouterAlien1_2(sf::Sprite sp, float posAlienX, float posAlien
 sf::Sprite Alien::ajouterAlien2_1(sf::Sprite sp, float posAlienX, float posAlienY)
 {
 
-    if (!alien.loadFromFile("../ressource/alien2_1.png", sf::IntRect(0, 0, 100,100)))
+    if (!alien.loadFromFile("ressource/alien2_1.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme
@@ -68,7 +68,7 @@ sf::Sprite Alien::ajouterAlien2_1(sf::Sprite sp, float posAlienX, float posAlien
 
 sf::Sprite Alien::ajouterAlien2_2(sf::Sprite sp, float posAlienX, float posAlienY)
 {
-    if (!alien.loadFromFile("../ressource/alien2_2.png", sf::IntRect(0, 0, 100,100))) //£¨x0, y0£©,(x1, y1)-->(left, top),(right, bottom)
+    if (!alien.loadFromFile("ressource/alien2_2.png", sf::IntRect(0, 0, 100,100))) //£¨x0, y0£©,(x1, y1)-->(left, top),(right, bottom)
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme
@@ -86,7 +86,7 @@ sf::Sprite Alien::ajouterAlien2_2(sf::Sprite sp, float posAlienX, float posAlien
 sf::Sprite Alien::ajouterAlien3_1(sf::Sprite sp, float posAlienX, float posAlienY)
 {
 
-    if (!alien.loadFromFile("../ressource/alien3_1.png", sf::IntRect(0, 0, 100,100)))
+    if (!alien.loadFromFile("ressource/alien3_1.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme
@@ -104,7 +104,7 @@ sf::Sprite Alien::ajouterAlien3_1(sf::Sprite sp, float posAlienX, float posAlien
 
 sf::Sprite Alien::ajouterAlien3_2(sf::Sprite sp, float posAlienX, float posAlienY)
 {
-    if (!alien.loadFromFile("../ressource/alien3_2.png", sf::IntRect(0, 0, 100,100)))
+    if (!alien.loadFromFile("ressource/alien3_2.png", sf::IntRect(0, 0, 100,100)))
     {
         std::cout<<"Erreur durant le chargement de l'image alien"<<std::endl;
         return sp; // On ferme le programme

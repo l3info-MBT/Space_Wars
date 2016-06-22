@@ -14,7 +14,7 @@ public:
     Multi();
     ~Multi();
     void afficher(sf::RenderWindow& fenetre);
-    const sf::Uint32 getMenuEtat() const {return m_multi;};
+    sf::Uint32 getMenuEtat() const {return m_multi;};
 
     enum Etat_Multi
     {

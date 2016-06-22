@@ -14,4 +14,5 @@ Multi::~Multi() {
 
 void Multi::afficher(sf::RenderWindow& fenetre) {
 // METTRE LE CODE ICI
+    fenetre.display();
 }

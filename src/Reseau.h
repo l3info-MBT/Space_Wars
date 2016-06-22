@@ -25,7 +25,7 @@ public:
     Reseau();
     ~Reseau();
     void afficher(sf::RenderWindow& fenetre);
-    const sf::Uint32 getMenuEtat() const {return m_choix_reseau;};
+    sf::Uint32 getMenuEtat() const {return m_choix_reseau;};
 
     enum Choix_Reseau
     {

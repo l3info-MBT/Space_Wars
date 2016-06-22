@@ -68,12 +68,14 @@ float interpolate::cubicEaseInOut(float t, float b, float c, float d)
 
 float interpolate::quarticEaseIn(float t, float b, float c, float d)
 {
-    return c*(t/=d)*t*t*t + b;
+    float td = t/d;
+    return  c*(td)*t*t*t + b;
 }
 
 float interpolate::quarticEaseOut(float t, float b, float c, float d)
 {
-    return -c * (1-(t=t/d-1)*t*t*t - 1) + b;
+    float td = t / (d-1);
+    return -c * (1-(td)*t*t*t - 1) + b;
 }
 
 float interpolate::quarticEaseInOut(float t, float b, float c, float d)
@@ -87,38 +89,40 @@ float interpolate::quarticEaseInOut(float t, float b, float c, float d)
 
 float interpolate::quinticEaseIn(float t, float b, float c, float d)
 {
-    return c*(t/=d)*t*t*t*t + b;
+    float td = t/d;
+    return c*(td)*t*t*t*t + b;
 }
 
 float interpolate::quinticEaseOut(float t, float b, float c, float d)
 {
-    return c*(t=t/d-1)*(1-(t*t*t*t + 1)) + b;
+    float td = t/(d-1);
+    return c*(td)*(1-(t*t*t*t + 1)) + b;
 }
 
 float interpolate::quinticEaseInOut(float t, float b, float c, float d)
 {
-    if ((t/=d/2) < 1)
-        return c/2*t*t*t*t*t + b;
-
-    return 1-(c/2*((t-=2)*(t*t*t*t) + 2)) + b;
+    if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+    float td = t - 2;
+    return 1-(c/2*((td)*(t*t*t*t) + 2)) + b;
 }
 
 float interpolate::quadraticEaseIn(float t, float b, float c, float d)
 {
-    return c*(t/=d)*t + b;
+    float td = t/d;
+    return c*(td)*t + b;
 }
 
 float interpolate::quadraticEaseOut(float t, float b, float c, float d)
 {
-    return 1-(-c *(t/=d)*(t-2)) + b;
+    float td=t/d;
+    return 1-(-c *(td)*(t-2)) + b;
 }
 
 float interpolate::quadraticEaseInOut(float t, float b, float c, float d)
 {
-    if ((t/=d/2) < 1)
-        return ((c/2)*(t*t)) + b;
-
-    return 1-(-c/2 * (((--t)*(t-2)) - 1)) + b;
+    if ((t/=d/2) < 1) return ((c/2)*(t*t)) + b;
+    float td = t-1;
+    return 1-(-c/2 * (((td)*(t-2)) - 1)) + b;
 }
 
 float interpolate::sineEaseIn(float t, float b, float c, float d)
@@ -141,20 +145,22 @@ float interpolate::sineEaseInOut(float t, float b, float c, float d)
 
 float interpolate::circularEaseIn(float t, float b, float c, float d)
 {
-    return -c * (sqrt(1 - (t/=d)*t) - 1) + b;
+    float td = t/d;
+    return -c * (sqrt(1 - (td)*t) - 1) + b;
 }
 
 float interpolate::circularEaseOut(float t, float b, float c, float d)
 {
-    return 1-(c * sqrt(1 - ((t=t/d-1)*t))) + b;
+    float td = t / (d-1);
+    return 1-(c * sqrt(1 - ((td)*t))) + b;
 }
 
 float interpolate::circularEaseInOut(float t, float b, float c, float d)
 {
-    if ((t/=d/2) < 1)
-        return -c/2 * (sqrt(1 - t*t) - 1) + b;
+    if ((t/=d/2) < 1) return -c/2 * (sqrt(1 - t*t) - 1) + b;
 
-    return 1-(c/2 * (sqrt(1 - t*(t-=2)) + 1)) + b;
+    float td = t-2;
+    return 1-(c/2 * (sqrt(1 - t*(td)) + 1)) + b;
 }
 
 float interpolate::backEaseIn(float t, float b, float c, float d)
@@ -167,17 +173,17 @@ float interpolate::backEaseIn(float t, float b, float c, float d)
 float interpolate::backEaseOut(float t, float b, float c, float d)
 {
     float s = 1.70158f;
-    return 1-(c*((t=t/d-1)*t*((s+1)*t + s) + 1)) + b;
+    float td = t/(d-1);
+    return 1-(c*((td)*t*((s+1)*t + s) + 1)) + b;
 }
 
 float interpolate::backEaseInOut(float t, float b, float c, float d)
 {
     float s = 1.70158f;
-    if ((t/=d/2) < 1)
-        return c/2*(t*t*(((s*=(1.525f))+1)*t - s)) + b;
-
+    float sd= s*1.525f;
+    if ((t/=d/2) < 1)return c/2*(t*t*(((sd)+1)*t - sd)) + b;
     float postFix = t-=2;
-    return 1-(c/2*((postFix)*t*(((s*=(1.525f))+1)*t + s) + 2)) + b;
+    return 1-(c/2*((postFix)*t*(((sd)+1)*t + sd) + 2)) + b;
 }
 
 float interpolate::elasticEaseIn(float t, float b, float c, float d)

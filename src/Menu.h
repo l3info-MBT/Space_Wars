@@ -20,7 +20,7 @@ public:
     Menu();
     ~Menu();
     void afficher(sf::RenderWindow& window);
-    const sf::Uint32 getMenuEtat() const {return m_choix_menu;};
+    sf::Uint32 getMenuEtat() const {return m_choix_menu;};
 
     enum Choix_Menu
     {

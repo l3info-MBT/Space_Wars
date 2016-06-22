@@ -33,7 +33,7 @@ public:
     ~Solo();
     void afficher(sf::RenderWindow& fenetre);
     void pause(sf::RenderWindow& fenetre);
-    const sf::Uint32 getMenuEtat() const {return m_solo;};
+    sf::Uint32 getMenuEtat() const {return m_solo;};
 
     enum Etat_Solo
     {

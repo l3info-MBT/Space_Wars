@@ -53,7 +53,7 @@ class Client {
     public:
     Client();
     ~Client();
-    const unsigned short int getPort () const {return port;};
+    unsigned short int getPort () const {return port;};
     unsigned short int setPort (unsigned short int p_port);
     const std::string getIp() const { return ip.toString();};
     void recupererListePartie() ;

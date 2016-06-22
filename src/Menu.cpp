@@ -27,13 +27,13 @@ void Menu::afficher(sf::RenderWindow& fenetre)
 
     //Création des Ressources Menu
     sf::Font police_menu;
-    if(!police_menu.loadFromFile("../ressource/fonts.ttf"))
+    if(!police_menu.loadFromFile("ressource/fonts.ttf"))
     {
         std::cerr<<"Impossible de charger la police d'écriture."<<std::endl;
     }
 
     sf::Texture fond_menu;
-    if(!fond_menu.loadFromFile("../ressource/fond.png"))
+    if(!fond_menu.loadFromFile("ressource/fond.png"))
     {
         std::cerr<<"Impossible de charger l'image de fond."<<std::endl;
     }
@@ -74,7 +74,7 @@ void Menu::afficher(sf::RenderWindow& fenetre)
     masque.setFillColor(sf::Color(0,0,0,255));
 
     sf::SoundBuffer menu_son_selection;
-    if(!menu_son_selection.loadFromFile("../ressource/son_selection.ogg"))
+    if(!menu_son_selection.loadFromFile("ressource/son_selection.ogg"))
     {
         std::cerr<<"Impossible de charger la son de selection du menu! "<<std::endl;
     }
@@ -83,7 +83,7 @@ void Menu::afficher(sf::RenderWindow& fenetre)
     menu_son.setVolume(50);
 
     sf::Music menu_musique;
-    if(!menu_musique.openFromFile("../ressource/musique.ogg"))
+    if(!menu_musique.openFromFile("ressource/musique.ogg"))
     {
         std::cout<<"Musique d'ambiance introuvable"<<std::endl;
     }
@@ -104,7 +104,6 @@ void Menu::afficher(sf::RenderWindow& fenetre)
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
     sf::Time TimePerFrame = sf::seconds(1.f/60.f);
     sf::Time fadeInFrames = sf::Time::Zero;
-    sf::Time fadeOutFrames = sf::Time::Zero;
     sf::Time moveText = sf::Time::Zero;
     sf::Time colorChanger = sf::Time::Zero;
     int couleurSwitch = 1;
@@ -204,7 +203,7 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                 }
                 else
                 {
-                    if(!menu_son.getStatus() == sf::Sound::Playing)
+                    if(menu_son.getStatus() != sf::Sound::Playing)
                         menu_son.stop(); // on tue le son pour éviter la répètitions
                 }
 
@@ -231,7 +230,7 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                 }
                 else
                 {
-                    if(!menu_son.getStatus() == sf::Sound::Playing)
+                    if(menu_son.getStatus() != sf::Sound::Playing)
                         menu_son.stop();
                 }
 
@@ -257,7 +256,7 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                 else
                 {
 
-                    if(!menu_son.getStatus() == sf::Sound::Playing)
+                    if(menu_son.getStatus() != sf::Sound::Playing)
                         menu_son.stop();
                 }
 
@@ -293,7 +292,6 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                     colorChanger += TimePerFrame;
 
                 float r = interpolate::sineEaseIn(colorChanger.asSeconds(),0.f,255.f,2.f);
-                float g = interpolate::sineEaseIn(colorChanger.asSeconds(),0.f,255.f,2.f);
                 float b = interpolate::sineEaseIn(colorChanger.asSeconds(),0.f,255.f,2.f);
 
                 //visual indicators of selection made
