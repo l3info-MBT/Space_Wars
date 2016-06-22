@@ -42,6 +42,12 @@ void Multi::afficher(sf::RenderWindow& fenetre) {
     Missile miss;
     Collision col;
 
+	  sf::Texture fond;
+	  fond.loadFromFile("ressource/fond.png");
+	  fond.setSmooth(true);
+	  sf::Sprite fond_jeu;
+	  fond_jeu.setTexture(fond);
+
     float x = 36.00, y = 70.00, yPlus = 45.00;
 
     int boool = 1, depVaisseauX = 0, cpt1, depAlienX = 0, depAlienY = -50,
@@ -142,9 +148,7 @@ void Multi::afficher(sf::RenderWindow& fenetre) {
 	std::ostringstream os_score_adv;
 	os_score << score;
 	scoreString1 = os_score.str();
-	scoreString2 = os_score_adv.str(); //%TONY récupérer le score joueur 2 (le mettre à la place de 
-	/**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-
+	scoreString2 = os_score_adv.str(); //137
 	sfScore1.setFont(font);
 	sfScore1.setString(scoreString1);
 	sfScore1.setCharacterSize(20);
@@ -258,7 +262,7 @@ void Multi::afficher(sf::RenderWindow& fenetre) {
       }
 
       fenetre.clear();
-
+		fenetre.draw(fond_jeu);
       //spriteVaisseauExplose = joueur.vaisseauExplose(spriteVaisseauExplose, depVaisseauX, 535);
       spriteVaisseau = joueur.ajouterVaisseau(spriteVaisseau, depVaisseauX, 535);
       //app.draw(spriteVaisseau);
