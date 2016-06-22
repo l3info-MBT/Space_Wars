@@ -86,6 +86,11 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
         Bouclier boucli;
         Missile miss;
         Collision col;
+        sf::Texture fond;
+        fond.loadFromFile("ressource/fond.png");
+        fond.setSmooth(true);
+        sf::Sprite fond_jeu;
+        fond_jeu.setTexture(fond);
 
         float x = 36.00, y = 70.00, yPlus = 45.00;
 
@@ -284,6 +289,7 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
             }
 
             fenetre.clear();
+            fenetre.draw(fond_jeu);
 
             //spriteVaisseauExplose = joueur.vaisseauExplose(spriteVaisseauExplose, depVaisseauX, 535);
             spriteVaisseau = joueur.ajouterVaisseau(spriteVaisseau, depVaisseauX, 535);
