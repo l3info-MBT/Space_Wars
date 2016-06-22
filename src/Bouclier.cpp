@@ -10,6 +10,7 @@
 
 #include "Bouclier.h"
 
+/* Ajout d'un bouclier */
 sf::Sprite Bouclier::ajouterBouclier(sf::Sprite sp, float posBouclierX, float posBouclierY)
 {
 
@@ -28,13 +29,14 @@ sf::Sprite Bouclier::ajouterBouclier(sf::Sprite sp, float posBouclierX, float po
     }
 }
 
-
+/* Suppréssion d'un bouclier */
 sf::Sprite Bouclier::supprimerBouclier(sf::Sprite sp)
 {
     sp.setScale(0.0f, 0.0f);
     sp.setPosition(0.0f, 0.0f);
     return sp;
 }
+
 
 sf::Vector2f Bouclier::getPosition(sf::Sprite sp)
 {
