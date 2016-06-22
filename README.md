@@ -24,12 +24,11 @@ Voici une liste non exhaustive des taches qui ont été ou sont encore à accomp
 
 Ce projet est un exercice de fin d'année pour notres licences, nous avons donc plusieurs critères à respecter. Nous sommes donc tenu d'utiliser la bibliothèque multimédia SFML **(Version 2.3.2)** ainsi qu'implémenter une partie réseaux à notre jeu.
 
-*Les dates du projet sont fixé du 6 Juin au 24 Juin 2016*
+*Les dates du projet sont fixées du 6 Juin au 24 Juin 2016*
 
 ## Les Régles:
 
-Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est de détruire des vagues d’aliens au moyen d’un missile en se déplaçant horizontalement sur l’écran. Ce jeu fait parti des classiques du jeu vidéo au même titre que Pac-Man et
-d’autres de ses contemporains.
+Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est de détruire des vagues d’aliens au moyen d’un missile en se déplaçant horizontalement sur l’écran. Ce jeu fait parti des classiques du jeu vidéo au même titre que Pac-Man et d’autres de ses contemporains.
 
 	— Le jeu commence avec un vaisseau qui a 3 points de vie et une vague de 5 x 11,
 	  soit 55 aliens.
@@ -39,7 +38,7 @@ d’autres de ses contemporains.
 
 	— Le vaisseau tire des laser très rapide.
 
-	— Un seul laser du vaisseau peu être présent sur la carte à la fois, ce qui veut dire
+	— Un seul laser du vaisseau peut être présent sur la carte à la fois, ce qui veut dire
 	  que pour tirer un laser, le précédent (si existant) doit être détruit.
 
 	— La vague d’ennemis se déplace horizontalement et descend petit à petit.
@@ -58,34 +57,19 @@ d’autres de ses contemporains.
 	  de haut en bas. Les missiles progressent uniquement verticalement et ne peuvent
 	  être déviés.
 
-	— Les missiles ennemis peuvent être détruits avec un missile du vaisseau.
-
 	— Un alien touché par un missile se voit détruit avec celui-ci.
 
-	— Chaque alien détruit donne un malus à l’adversaire (sauf en jeu solo) et rapporte
-	  des points de score, selon le type d’alien.
-
-	— Il y a 4 types d’aliens :
-		— Type 1 : Alien tirant un laser peu rapide.
-		— Type 2 : Alien tirant un laser rapide.
-		— Type 3 : Alien tirant un laser très rapide
-		— Type 4 : Alien très rapide bonus inoffensif raportant 200 points.
-
-	— La vague est constituée de :
+	— La vague est constituée de 3 types d’aliens:
 		— 1er et 2e rang : type 1 -> 10 points.
 		— 3e et 4e rang : type 2 -> 20 points.
 		— 5e rang : type 3 -> 50 points.
-		(L'alien bonus se promene horizontalement en haut de l'écran)
 
 	— Si le vaisseau est touché par un missile, le vaisseau perd 1 point de vie et le missile
 	  est détruit.
 
 	— Si un alien est derrière un autre alien, seul celui qui est devant peut tirer.
 
-	— A la fin de la partie, le perdant aura un malus pour la partie d’après. (sauf en
-	  jeu solo).
-
-	— Conditions de victoire détruire tous les aliens sur la carte.
+	— Le but du jeu est de détruire tous les aliens sur la carte.
 
 ## Contacts:
 
@@ -100,7 +84,7 @@ d’autres de ses contemporains.
 ## Lancement du jeu:
 
   Space Wars fonctionne sur tous système d'exploitation qui possède les dépendances du programme.
-Il est écrit en C++ et utilise l'API SFML, vous devez donc avoir installé SFML sous sa version 2.3.2 minimale de préférence sur votre machine.
+Il est écrit en C++ et utilise l'API SFML; vous devez donc avoir installé SFML sous sa version 2.3.2 minimale de préférence sur votre machine.
 Il en va de même pour la librairie libboost-dev et pkg-config.
 
 ####Pour un systéme linux:
@@ -110,7 +94,7 @@ apt-get install libboost-dev
 
 apt-get install pkg-config
 
-apt-get intall libsfml-dev
+apt-get intall libsfml-all
 ```
 Après quoi, vous pouvez lancer la compilation du jeu en allant dans le dossier du projet dans un terminal et en tapant les lignes de commande suivantes:
 
@@ -124,4 +108,4 @@ Pour lancer le jeu, il vous suffit de faire:
 
 ####Pour un systéme windows:
 
-Pour la procédure sur windows, renseignez vou sur le site officiel de la SFML afin d'installer la bibliothéque ainsi que pour la compilation du projet.
+Pour la procédure sur windows, renseignez vous sur le site officiel de la SFML afin d'installer la bibliothéque ainsi que pour la compilation du projet.
