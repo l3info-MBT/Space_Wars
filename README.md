@@ -110,7 +110,7 @@ apt-get install libboost-dev
 
 apt-get install pkg-config
 
-apt-get intall libsfml-all
+apt-get intall libsfml-dev
 ```
 Après quoi, vous pouvez lancer la compilation du jeu en allant dans le dossier du projet dans un terminal et en tapant les lignes de commande suivantes:
 
