@@ -7,7 +7,7 @@ CXXFLAGS += `pkg-config --cflags $(PACKAGES)`
 LDFLAGS +=`pkg-config --libs-only-L --libs-only-other $(PACKAGES)`
 LIBS +=`pkg-config --libs-only-l $(PACKAGES)`
 
-PROGFILE = MainProg.cpp 
+PROGFILE = main.cpp 
 TESTFILE = MainTest.cpp
 BINDIR = ./bin
 OBJDIR = ./obj
@@ -40,7 +40,7 @@ $(PROGOBJ): $(PROGSRC)
 $(TESTOBJ): $(TESTSRC) $(TESTHPP)
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/%.hpp 
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/%.h 
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 cppcheck:
