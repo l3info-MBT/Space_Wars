@@ -93,7 +93,7 @@ void Jeu::chargerMenuPrincipal(){
 }
 
 void Jeu::chargerSolo(){
-    std::cout<<"Chargement du menu..."<<std::endl;
+    std::cout<<"Chargement du Jeu..."<<std::endl;
     m_fenetre.setTitle("Space Wars - Solo");
 
     Solo partie_solo;
@@ -105,9 +105,9 @@ void Jeu::chargerSolo(){
 }
 
 void Jeu::chargerMenuReseau(){
-    std::cout<<"Chargement du menu..."<<std::endl;
+    std::cout<<"Chargement du Multi..."<<std::endl;
     m_fenetre.setTitle("Space Wars - Menu Reseaux");
-
+    std::cout<<"Création du réseaux..."<<std::endl;
     Reseau partie_multi;
     partie_multi.afficher(m_fenetre);
     if(partie_multi.getMenuEtat() == Reseau::m_retour)

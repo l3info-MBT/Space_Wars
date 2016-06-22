@@ -3,7 +3,6 @@
 #On ignore les script et les archive
 *.sh
 *.a
-*.txt
 
 #On ignore le dossier Bin et Obj
 bin/

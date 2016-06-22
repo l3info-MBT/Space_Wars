@@ -7,6 +7,11 @@
  *                  Touat Malik
  *                  Zhiwen Qi
  */
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <iostream>
+
 #include "Solo.h"
 
 Solo::Solo() {
@@ -163,12 +168,11 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
             }
             else {
                 textScore.setFont(font);
-                textScore.setString("Score: ");
+                textScore.setString("Score : ");
                 textScore.setCharacterSize(30);
                 textScore.setPosition(10, 0);
-                sfScore.setColor(sf::Color(255, 255, 255));
                 textScore.setStyle(sf::Text::Bold);
-
+		
                 std::string scoreString;
                 std::ostringstream os;
                 os << score;
@@ -177,20 +181,40 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
                 sfScore.setFont(font);
                 sfScore.setString(scoreString);
                 sfScore.setCharacterSize(25);
-                sfScore.setPosition(180, 5);
+                sfScore.setPosition(140, 5);
                 sfScore.setColor(sf::Color(255, 255, 255));
                 sfScore.setStyle(sf::Text::Bold);
-
+		
                 textVie.setFont(font);
-                textVie.setString("Vie: ");
+                textVie.setString("Vies: ");
                 textVie.setCharacterSize(30);
-                textVie.setPosition(350, 0);
-                sfScore.setColor(sf::Color(255, 255, 255));
+                textVie.setPosition(365, 0);
                 textVie.setStyle(sf::Text::Bold);
             }
             //Si le joueur atteint 0 point de vie:
             if (viesJoueur == 0) {
                 std::cout << "!!!!! GAME OVER !!!!!" << std::endl;
+		
+		std::ifstream fichierLire("ressource/record.txt", std::ios::in); // on ouvre le fichier en lecture.
+		if(fichierLire)
+		  {
+		    int contenu = 0;
+		    fichierLire >> contenu;
+		      if(score < contenu)
+			score = contenu;
+		      fichierLire.close();
+		  }
+		else
+		  std::cout << "fichier record.txt introuvable." << std::endl;
+		
+		std::ofstream fichierEcrire("ressource/record.txt", std::ios::out | std::ios::trunc); // on ouvre le fichier en lecture.
+		if(fichierEcrire) // si réussi
+		  {
+		    fichierEcrire << score;
+		    fichierEcrire.close();
+		  }
+		else
+		  std::cout << "fichier record.txt introuvable." << std::endl;
                 m_solo = m_fin;
                 return;
             }
@@ -212,6 +236,7 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
                 //Retourner au menu %menu
                 std::cout << "!!!!!! Victoire !!!!!!" << std::endl;;
                 m_solo = m_fin;
+		//
                 return;
             }
             else
@@ -284,7 +309,8 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
             }
 
             if (missileVaisseauOk == 0)
-                spriteMissileVaisseau = miss.ajouterMissileVaisseau(spriteMissileVaisseau, depMissileX + 21,
+
+	      spriteMissileVaisseau = miss.ajouterMissileVaisseau(spriteMissileVaisseau, depMissileX + 21,
                                                                     depMissileY);
             if (missileAlienOk == 0)
                 spriteMissileAlien = miss.ajouterMissileAlien(spriteMissileAlien, depMissileAlienX + 21,

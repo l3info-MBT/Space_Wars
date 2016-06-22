@@ -1,6 +1,12 @@
-//
-// Created by tony on 22/06/16.
-//
+/*
+ *  Type Fichier:   Header
+ *  Nom Fichier :   Solo.h
+ *  Projet      :   DPSI
+ *  Etudiant    :   Deborguere Tony
+ *                  Tekeli Baris
+ *                  Touat Malik
+ *                  Zhiwen Qi
+ */
 
 #ifndef DPSI_MULTI_H
 #define DPSI_MULTI_H

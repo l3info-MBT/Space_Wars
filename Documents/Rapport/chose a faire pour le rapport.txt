@@ -1,0 +1,12 @@
+--- regle du jeu 
+--- contexte à developper 
+--- besoin de l'sfml dans les contraintes 
+--- il y a deux contexts 
++ ce qu'il y a dans le logiciel, comment l'utiliser (avec un petit shema) 
+--- architecture complexe (partie texte) à deplacer dans la presentation du jeu 
+--- "gestion du jeu" ou "affichage" à la place d' "sfml" dans points importants  
+--- explications pour le jeu (interactions entre les divers classes) et pour le reseaux  
+  -  avec le lien du diagramme de classes / liste des problemes / comment on resoud les problemes 
+     avec les soluces du diagramme de classe.
+--- objectifs à mettre dans la partie specifications du rapport - objectif prévu/fait et les erreurs/ce qui ne va pas 
++ archive (makefile, doc installation, rapport pdf) "Livrables"

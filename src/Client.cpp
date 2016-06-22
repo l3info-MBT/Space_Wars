@@ -14,15 +14,15 @@ Client::Client(){
     setPort(55002);
     socket.bind(port);
     sf::Packet packet;
-    if (ip_serveur == NULL){
-        socket.receive(packet,ip_serveur,rport);
-    }
+    ip_serveur = "192.168.0.20";
     mesinfo.nom_partie="Partie de";
     mesinfo.adr_hote=sf::IpAddress::getLocalAddress().toString();
     mesinfo.nb_vie=3;
     mesinfo.scores=0;
     mesinfo.pleine=false;
     mesinfo.type_msg="";
+    mesinfo.maliste.begin();
+    std::cout<<"Création d'un client..."<<std::endl;
 }
 Client::~Client(){
 
@@ -43,7 +43,7 @@ void Client::seConnecter(){
     socket.receive(packet_connexion,ip_serveur,port);
     Info reception;
     packet_connexion >> reception;
-    if (reception.type_msg == "OK") std::cout<<"Connexion prise en compte"<<std::endl;
+    if (reception.type_msg == "OK") std::cout<<"\tConnexion prise en compte"<<std::endl;
 }
 
 void Client::creerUnePartie(sf::RenderWindow &fenetre){
@@ -95,7 +95,7 @@ void Client::recupererListePartie() {
     Info reception;
     packet_connexion >> reception;
     if (reception.type_msg == "OK"){
-        std::cout<<"Récupération de la liste des parties"<<std::endl;
+        std::cout<<"\tRécupération de la liste des parties"<<std::endl;
         mesinfo.maliste = reception.maliste;
         if (mesinfo.maliste.size())std::cout<<"la liste n'est pas vide"<<std::endl;
     }
