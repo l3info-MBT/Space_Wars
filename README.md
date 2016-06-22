@@ -105,7 +105,3 @@ make
 Pour lancer le jeu, il vous suffit de faire:
 
 `./bin/main.out`
-
-####Pour un systéme windows:
-
-Pour la procédure sur windows, renseignez vous sur le site officiel de la SFML afin d'installer la bibliothéque ainsi que pour la compilation du projet.
