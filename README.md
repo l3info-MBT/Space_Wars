@@ -67,17 +67,10 @@ Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est d
 	— Chaque alien détruit donne un malus à l’adversaire (sauf en jeu solo) et rapporte
 	  des points de score, selon le type d’alien.
 
-	— Il y a 4 types d’aliens :
-		— Type 1 : Alien tirant un laser peu rapide.
-		— Type 2 : Alien tirant un laser rapide.
-		— Type 3 : Alien tirant un laser très rapide
-		— Type 4 : Alien très rapide bonus inoffensif raportant 200 points.
-
-	— La vague est constituée de :
+	— La vague est constituée de 3 types d’aliens:
 		— 1er et 2e rang : type 1 -> 10 points.
 		— 3e et 4e rang : type 2 -> 20 points.
 		— 5e rang : type 3 -> 50 points.
-		(L'alien bonus se promene horizontalement en haut de l'écran)
 
 	— Un alien touché par un missile se voit détruit avec celui-ci.
 
@@ -91,8 +84,6 @@ Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est d
 
 	— Si un alien est derrière un autre alien, seul celui qui est devant peut tirer.
 
-	— Conditions de victoire détruire tous les aliens sur la carte.
-	
 	— Le but du jeu est de détruire tous les aliens sur la carte.
 
 
@@ -130,9 +121,3 @@ make
 Pour lancer le jeu, il vous suffit de faire:
 
 `./bin/main.out`
-
-
-####Pour un systéme windows:
-
-Pour la procédure sur windows, renseignez vou sur le site officiel de la SFML afin d'installer la bibliothéque ainsi que pour la compilation du projet.
-
