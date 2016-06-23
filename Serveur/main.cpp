@@ -86,7 +86,7 @@ int main()
                 std::string ip = sender.toString();
                 reponse.nom_partie= "Partie de " + ip;
                 reponse.pleine = false;
-                reponse.adr_hote = ip   ;
+                reponse.adr_hote = ip  ;
                 partie.nom_partie= "Partie de " + ip;
                 partie.pleine = false;
                 partie.adr_hote = ip   ;
@@ -101,11 +101,16 @@ int main()
             if(mesinfo.type_msg == "REJOINDRE" )
             {
                 std::cout<<"Le client "<<sender.toString()<<" recherche une partie"<<std::endl;
-                if (mesinfo.adr_hote != partie.adr_hote){
+                if (is_partie)
+				{
                     sf::Packet rpacket;
-                    reponse.type_msg = "OK";
+                    reponse.type_msg ="OK";
+                    reponse.nom_partie= partie.nom_partie;
+					reponse.pleine = true;
+					reponse.adr_hote = partie.adr_hote;
+                    rpacket << reponse;
                     socket.send(rpacket,sender,port);
-                    socket.send(rpacket,reponse.adr_hote,port);
+                    socket.send(rpacket,partie.adr_hote,port);
                 }
                 else
                 {

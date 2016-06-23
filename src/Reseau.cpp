@@ -22,8 +22,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
 
     Client monclient;
     monclient.seConnecter();
-    Cadre mon_cadre = monclient.recupererListePartie();
-    std::cout<<mon_cadre.getNbCadre()<<std::endl;
+    Cadre mon_cadre = monclient.recupererListePartie(fenetre);
     //Cadre mon_cadre2("FERMER");
     //std::cout<<mon_cadre2.getNbCadre()<<std::endl;
     //Cadre mon_cadre3("FERMER");
@@ -174,7 +173,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
 
                     case sf::Keyboard::C:{
                         m_choix_reseau = m_creer_partie;
-                        monclient.creerUnePartie();
+                        monclient.creerUnePartie(fenetre);
                         break;
                     }
 

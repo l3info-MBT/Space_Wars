@@ -20,7 +20,7 @@ Client::Client(){
             pport = pport + 1;
         }
     }
-    ip_serveur = "192.168.51.120";
+    ip_serveur = "192.168.22.133";
     mesinfo.nom_partie="Partie de";
     mesinfo.adr_hote=sf::IpAddress::getLocalAddress().toString();
     mesinfo.nb_vie=3;
@@ -40,7 +40,7 @@ unsigned short int Client::setPort (unsigned short int p_port){
     else { return 1;}
 }
 
-void Client::attendre(){
+void Client::attendre(sf::RenderWindow& fenetre){
 
     sf::Packet packet_connexion;
     Info att_partie;
@@ -49,8 +49,10 @@ void Client::attendre(){
         std::cout<<"Attente d'un adversaire"<<std::endl;
         socket.receive(packet_connexion,ip_serveur,port);
         packet_connexion >> att_partie;
+        att_partie.pleine = true;
     }while (!att_partie.pleine);
-    return;
+    Multi monjeu;
+    monjeu.afficher(fenetre);
 }
 
 void Client::seConnecter(){
@@ -65,7 +67,7 @@ void Client::seConnecter(){
     if (reception.type_msg == "OK") std::cout<<"\tConnexion prise en compte"<<std::endl;
 }
 
-Cadre Client::creerUnePartie(){
+Cadre Client::creerUnePartie(sf::RenderWindow& fenetre){
     sf::Packet packet_connexion;
     mesinfo.type_msg="CREER";
     packet_connexion << mesinfo;
@@ -80,7 +82,7 @@ Cadre Client::creerUnePartie(){
         std::cout<<reception.nom_partie<<std::endl;
         std::cout<<reception.adr_hote<<std::endl;
         Cadre mon_cadre("OUVERT",reception.nom_partie,reception.adr_hote);
-        attendre();
+        attendre(fenetre);
         return mon_cadre;
     }
     else {
@@ -89,7 +91,7 @@ Cadre Client::creerUnePartie(){
         std::cout<<reception.nom_partie<<std::endl;
         std::cout<<reception.adr_hote<<std::endl;
         Cadre mon_cadre("Ferme",reception.nom_partie,reception.adr_hote);
-        attendre();
+        attendre(fenetre);
         return mon_cadre;
     }
 }
@@ -112,12 +114,11 @@ void Client::rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre){
         partie.afficher(fenetre);
     }
     else{
-        std::cout<<"Aucune partie n'est disponnible création d'une partie"<<std::endl;
-        creerUnePartie();
+        std::cout<<"Aucune partie n'est disponnible."<<std::endl;
     }
 
 }
-Cadre Client::recupererListePartie() {
+Cadre Client::recupererListePartie(sf::RenderWindow& fenetre) {
     sf::Packet packet_connexion;
     mesinfo.type_msg="LISTE";
     packet_connexion << mesinfo;
@@ -128,7 +129,7 @@ Cadre Client::recupererListePartie() {
     packet_connexion >> reception;
     std::cout<<reception.type_msg<<std::endl;
     if (reception.type_msg=="NON"){
-        return creerUnePartie();
+        return creerUnePartie(fenetre);
     }
     else if (reception.type_msg == "OK"){
         std::cout<<"\tRécupération de la liste des parties"<<std::endl;

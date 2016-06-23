@@ -58,11 +58,11 @@ class Client {
     unsigned short int getPort () const {return port;};
     unsigned short int setPort (unsigned short int p_port);
     const std::string getIp() const { return ip.toString();};
-    Cadre recupererListePartie() ;
+    Cadre recupererListePartie(sf::RenderWindow& fenetre) ;
     void seConnecter();
-    Cadre creerUnePartie();
+    Cadre creerUnePartie(sf::RenderWindow& fenetre);
     void rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre);
-    void attendre();
+    void attendre(sf::RenderWindow& fenetre);
 };
 
 
