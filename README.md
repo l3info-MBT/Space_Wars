@@ -6,8 +6,8 @@
 - [TODO Liste](#todo)
 - [Principe de Fonctionement](#les-régles)
 - [Contact](#contacts)
-- [Lancement du jeu](##lancement-du-jeu)
-- [Lancement du Serveur(#lancement-du-serveur)
+- [Lancement du jeu](#lancement-du-jeu)
+- [Lancement du Serveur](#lancement-du-serveur)
 
 
 
