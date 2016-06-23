@@ -164,10 +164,9 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
                     }
 
                     case  sf::Keyboard::Return:{
+                        m_choix_reseau= m_rejoindre;
                         if (cadre_select.getPosition().y < 190){
-                        monclient.rejoindreUnePartie(fenetre);
-                        Multi jeu_multi;
-                        jeu_multi.afficher(fenetre);
+                        monclient.rejoindreUnePartie(mon_cadre,fenetre);
                         }
                         else std::cout<<"La partie n'existe pas"<<std::endl;
                         break;

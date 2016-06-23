@@ -16,6 +16,7 @@
 #include <list>
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include "Multi.h"
 #include "Cadre.h"
 
@@ -60,7 +61,8 @@ class Client {
     Cadre recupererListePartie() ;
     void seConnecter();
     Cadre creerUnePartie();
-    void rejoindreUnePartie(sf::RenderWindow& fenetre);
+    void rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre);
+    void attendre();
 };
 
 

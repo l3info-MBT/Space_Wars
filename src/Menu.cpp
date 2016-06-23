@@ -147,13 +147,11 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                         {
                             boundcount++;
                             selection = 0;
-                            std::cout<<"bound count : "<<boundcount<<std::endl;
                         }
                         else
                         {
                             selection--;
                             boundcount = 0;
-                            std::cout<<"bound count : "<<boundcount<<std::endl;
                         }
 
                         if(boundcount == 0)
@@ -167,13 +165,11 @@ void Menu::afficher(sf::RenderWindow& fenetre)
                         {
                             boundcount++;
                             selection = 2;
-                            std::cout<<"bound count : "<<boundcount<<std::endl;
                         }
                         else
                         {
                             boundcount = 0;
                             selection++;
-                            std::cout<<"bound count : "<<boundcount<<std::endl;
                         }
 
                         if(boundcount == 0)

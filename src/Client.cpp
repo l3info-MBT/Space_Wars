@@ -11,9 +11,15 @@
 #include "Client.h"
 
 Client::Client(){
-    setPort(55002);
-    socket.bind(port);
-    sf::Packet packet;
+    setPort(55003);
+    unsigned short int pport = getPort() + 1;
+    while(!socket.bind(port))
+    {
+        if (!socket.bind(pport))
+        {
+            pport = pport + 1;
+        }
+    }
     ip_serveur = "192.168.51.120";
     mesinfo.nom_partie="Partie de";
     mesinfo.adr_hote=sf::IpAddress::getLocalAddress().toString();
@@ -32,6 +38,19 @@ unsigned short int Client::setPort (unsigned short int p_port){
     port = p_port;
     if(port == p_port){ return 0;}
     else { return 1;}
+}
+
+void Client::attendre(){
+
+    sf::Packet packet_connexion;
+    Info att_partie;
+    do
+    {
+        std::cout<<"Attente d'un adversaire"<<std::endl;
+        socket.receive(packet_connexion,ip_serveur,port);
+        packet_connexion >> att_partie;
+    }while (!att_partie.pleine);
+    return;
 }
 
 void Client::seConnecter(){
@@ -56,11 +75,12 @@ Cadre Client::creerUnePartie(){
     Info reception;
     packet_connexion >> reception;
     if (reception.type_msg == "REPONSE"){
-         std::cout<<"\tCréation de partie prise en compte"<<std::endl;
+         std::cout<<"\tCréation rde partie prise en compte"<<std::endl;
         std::cout<<reception.type_msg<<std::endl;
         std::cout<<reception.nom_partie<<std::endl;
         std::cout<<reception.adr_hote<<std::endl;
         Cadre mon_cadre("OUVERT",reception.nom_partie,reception.adr_hote);
+        attendre();
         return mon_cadre;
     }
     else {
@@ -69,12 +89,15 @@ Cadre Client::creerUnePartie(){
         std::cout<<reception.nom_partie<<std::endl;
         std::cout<<reception.adr_hote<<std::endl;
         Cadre mon_cadre("Ferme",reception.nom_partie,reception.adr_hote);
+        attendre();
         return mon_cadre;
     }
 }
-void Client::rejoindreUnePartie(sf::RenderWindow& fenetre){
+void Client::rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre){
     sf::Packet packet_connexion;
     mesinfo.type_msg="REJOINDRE";
+    mesinfo.nom_partie = mon_cadre.getNomReseau();
+    mesinfo.adr_hote=mon_cadre.getEtatPartie();
     packet_connexion << mesinfo;
     socket.send(packet_connexion,ip_serveur,port);
     std::cout<<"Demande d'une partie"<<std::endl;

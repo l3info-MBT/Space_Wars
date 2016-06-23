@@ -148,7 +148,7 @@ void Multi::afficher(sf::RenderWindow& fenetre) {
 	std::ostringstream os_score_adv;
 	os_score << score;
 	scoreString1 = os_score.str();
-	scoreString2 = os_score_adv.str(); //137
+	scoreString2 = os_score.str();
 	sfScore1.setFont(font);
 	sfScore1.setString(scoreString1);
 	sfScore1.setCharacterSize(20);

@@ -553,10 +553,9 @@ void Solo::afficher(sf::RenderWindow& fenetre) {
                 default:
                     break;
             }
-
+            fenetre.draw(borderTop);
             fenetre.draw(textVie);
             fenetre.draw(textScore);
-            fenetre.draw(borderTop);
             fenetre.draw(borderBottom);
             fenetre.draw(sfScore);
 

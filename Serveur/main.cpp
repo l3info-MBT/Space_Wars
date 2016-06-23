@@ -35,6 +35,7 @@ int main()
 {
 
     Info mesinfo;
+    Info partie;
     sf::Packet packet;
     int nbclient =0;
     sf::IpAddress ip = sf::IpAddress::getLocalAddress();
@@ -85,7 +86,10 @@ int main()
                 std::string ip = sender.toString();
                 reponse.nom_partie= "Partie de " + ip;
                 reponse.pleine = false;
-                reponse.adr_hote = ip;
+                reponse.adr_hote = ip   ;
+                partie.nom_partie= "Partie de " + ip;
+                partie.pleine = false;
+                partie.adr_hote = ip   ;
                 rpacket << reponse;
                 is_partie = true;   
                 socket.send(rpacket,sender,port);
@@ -97,9 +101,17 @@ int main()
             {   
                 sf::Packet rpacket;
                 std::cout<<"Le client "<<sender.toString()<<" recherche une partie"<<std::endl;
-                reponse.type_msg = "OK";
-                socket.send(rpacket,sender,port);
-                socket.send(rpacket,reponse.adr_hote,port);
+                if (mesinfo.adr_hote == partie.adr_hote){
+                    reponse.type_msg = "OK";
+                    socket.send(rpacket,sender,port);
+                    socket.send(rpacket,reponse.adr_hote,port);
+                }
+                else
+                {   
+                    reponse.type_msg = "NON";
+                    socket.send(rpacket,sender,port);
+                    std::cout<<"La partie n'existe pas"<<std::endl;
+                }
             }
 
             if(mesinfo.type_msg == "LISTE" )
@@ -109,7 +121,9 @@ int main()
                     sf::Packet rpacket;
                     std::cout<<"Il existe actuellement : "<<is_partie<<" sur le serveur"<<std::endl;
                     reponse.type_msg = "OK";
-                    std::cout<<reponse.type_msg<<std::endl;
+                    reponse.nom_partie = partie.nom_partie;
+                    reponse.pleine = partie.pleine;
+                    reponse.adr_hote = partie.adr_hote;
                     rpacket << reponse;
                     socket.send(rpacket,sender,port);
                 }
@@ -122,6 +136,11 @@ int main()
                     socket.send(rpacket,sender,port);
                 }
                 std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
+            }
+
+            if(mesinfo.type_msg == "SCORES" )
+            {  
+
             }
 
             fichier << genererLog();
