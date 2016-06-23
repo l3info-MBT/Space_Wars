@@ -3,10 +3,11 @@
  ![Logo Space invaders](http://www.kirikoo.net/images/14Anonyme-20160607-115428.png)
 
 ## Table des matières
-- [TODO Liste](#TODO)
-- [Principe de Fonctionement](#Les Régles)
-- [Contact](#Nous contactez)
-- [Lancement du jeu](#Pré-requis)
+- [TODO Liste](#todo)
+- [Principe de Fonctionement](#les-régles)
+- [Contact](#contacts)
+- [Lancement du jeu](##lancement-du-jeu)
+- [Lancement du Serveur(#lancement-du-serveur)
 
 
 
