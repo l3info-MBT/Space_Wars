@@ -19,13 +19,13 @@ Reseau::~Reseau(){
 
 void Reseau::afficher(sf::RenderWindow& fenetre) {
     if (m_choix_reseau != m_initialiser) m_choix_reseau=m_initialiser;
-    Cadre mon_cadre;
-    Cadre mon_cadre2("FERMER");
-    Cadre mon_cadre3("FERMER");
 
     Client monclient;
     monclient.seConnecter();
-    monclient.recupererListePartie();
+    Cadre mon_cadre = monclient.recupererListePartie();
+
+    Cadre mon_cadre2("FERMER");
+    Cadre mon_cadre3("FERMER");
 
     sf::Texture fond;
     if(!fond.loadFromFile("ressource/fond.png")){
@@ -116,6 +116,13 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
     sf::Event event;
     while (fenetre.isOpen()) {
 
+        fenetre.clear();
+        fenetre.draw(fond_menu);
+        fenetre.draw(cadre_general);
+        fenetre.draw(cadre_select);
+        fenetre.draw(Titre);
+        fenetre.draw(sousTitre);
+
         while (fenetre.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 fenetre.close();
@@ -156,7 +163,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
 
                     case  sf::Keyboard::Return:{
                         if (cadre_select.getPosition().y < 190){
-                        //monclient.rejoindreUnePartie(fenetre);
+                        monclient.rejoindreUnePartie(fenetre);
                         Multi jeu_multi;
                         jeu_multi.afficher(fenetre);
                         }
@@ -166,7 +173,7 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
 
                     case sf::Keyboard::C:{
                         m_choix_reseau = m_creer_partie;
-                        monclient.creerUnePartie(fenetre);
+                        monclient.creerUnePartie();
                         break;
                     }
 
@@ -181,13 +188,6 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
                 }
             }
         }
-
-        fenetre.clear();
-        fenetre.draw(fond_menu);
-        fenetre.draw(cadre_general);
-        fenetre.draw(cadre_select);
-        fenetre.draw(Titre);
-        fenetre.draw(sousTitre);
         mon_cadre.afficher_cadre(fenetre);
         mon_cadre2.afficher_cadre(fenetre);
         mon_cadre3.afficher_cadre(fenetre);

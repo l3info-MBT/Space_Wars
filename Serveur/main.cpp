@@ -12,7 +12,6 @@
         int scores;
         int nb_vie;
         bool pleine;
-        std::list<Info> maliste;
     };
 
 std::string genererLog()
@@ -37,19 +36,17 @@ int main()
 
     Info mesinfo;
     sf::Packet packet;
-    sf::Packet rpacket;
     int nbclient =0;
-    std::list<Info> maliste;
-    std::list<Info> it;
     sf::IpAddress ip = sf::IpAddress::getLocalAddress();
-    std::cout<<ip<<std::endl;
-    it = maliste.begin();
+    bool is_partie =false;
+
     std::cout<<"Ouverture des Logs ..."<<std::endl;
     std::ofstream fichier("log.txt", std::ios::out | std::ios::ate);
 
     if(fichier)
     {
         std::cout<<"\tOuverture Réussi!\n"<<std::endl;
+        std::cout<<ip<<std::endl;
 
         std::cout<<"Création d'un socket udp liè au port 55002 ..."<<std::endl;
         sf::UdpSocket socket;
@@ -62,7 +59,7 @@ int main()
         sf::IpAddress sender;
         unsigned short port;
         bool serv = true;
-
+        std::cout<<"Nombre de partie :"<<is_partie<< std::endl;
         while (serv)
         {
             Info reponse;
@@ -71,6 +68,7 @@ int main()
 
             if(mesinfo.type_msg == "CONNEXION" )
             {
+                sf::Packet rpacket;
                 nbclient++;    
                 std::cout<<"Ajout d'un client :"<< sender.toString()<< std::endl;
                 reponse.type_msg = "OK";
@@ -81,14 +79,15 @@ int main()
             }
 
             if(mesinfo.type_msg == "CREER" )
-            {  
-                std::cout<<"Le client :"<< sender.toString()<<" demande de créer une partie"<< std::endl;
-                reponse.type_msg = "OK";
-                std::string ip = sender.toString()
+            {  sf::Packet rpacket;
+                std::cout<<"Le client "<< sender.toString()<<" demande de créer une partie"<< std::endl;
+                reponse.type_msg = "REPONSE";
+                std::string ip = sender.toString();
                 reponse.nom_partie= "Partie de " + ip;
                 reponse.pleine = false;
-                maliste.push_back(mesinfo.maliste);
+                reponse.adr_hote = ip;
                 rpacket << reponse;
+                is_partie = true;   
                 socket.send(rpacket,sender,port);
                 std::cout<<reponse.type_msg<<std::endl;
                 std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
@@ -96,17 +95,32 @@ int main()
 
             if(mesinfo.type_msg == "REJOINDRE" )
             {   
+                sf::Packet rpacket;
                 std::cout<<"Le client "<<sender.toString()<<" recherche une partie"<<std::endl;
+                reponse.type_msg = "OK";
+                socket.send(rpacket,sender,port);
+                socket.send(rpacket,reponse.adr_hote,port);
             }
 
             if(mesinfo.type_msg == "LISTE" )
             {  
                 std::cout<<"Le client "<<sender.toString()<<" demande la lite des parties"<<std::endl;
-                reponse.type_msg = "OK";
-                reponse.maliste = maliste;
-                rpacket << reponse;
-                socket.send(rpacket,sender,port);
-                std::cout<<reponse.type_msg<<std::endl;
+                if (is_partie) {
+                    sf::Packet rpacket;
+                    std::cout<<"Il existe actuellement : "<<is_partie<<" sur le serveur"<<std::endl;
+                    reponse.type_msg = "OK";
+                    std::cout<<reponse.type_msg<<std::endl;
+                    rpacket << reponse;
+                    socket.send(rpacket,sender,port);
+                }
+                else {
+                    sf::Packet rpacket;
+                    std::cout<<"Il existe actuellement : "<<is_partie<<" sur le serveur"<<std::endl;
+                    reponse.type_msg ="NON";
+                    std::cout<<reponse.type_msg<<std::endl;
+                    rpacket << reponse;
+                    socket.send(rpacket,sender,port);
+                }
                 std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
             }
 
