@@ -121,3 +121,16 @@ make
 Pour lancer le jeu, il vous suffit de faire:
 
 `./bin/main.out`
+
+## Lancement du serveur:
+
+  Space Wars dispo d'une application serveur pour gérer les connexion réseaux. Pour compiler ce serveur mettez vous dans le dossier serveur et:
+
+
+```
+g++ main.cpp -o main -lsfml-network
+```
+
+Pour lancer le serveur, il vous suffit ensuite de faire:
+
+`./main`
