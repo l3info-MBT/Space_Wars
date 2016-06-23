@@ -85,13 +85,13 @@ Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est d
 
 ## Contacts:
 
-[DEBORGUERE TONY](t.deborguere@gmail.com)
+[DEBORGUERE TONY](mailto:t.deborguere@gmail.com)
 
-[TEKELI BARIS](tekelibaris@gmail.com)
+[TEKELI BARIS](mailto:tekelibaris@gmail.com)
 
-[TOUAT MALIK ](mal.touat@gmail.com)
+[TOUAT MALIK ](mailto:mal.touat@gmail.com)
 
-[QI ZHIWEN ](531940615@qq.com)
+[QI ZHIWEN ](mailto:531940615@qq.com)
 
 ## Lancement du jeu:
 
