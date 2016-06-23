@@ -24,7 +24,8 @@ Client::Client(){
     mesinfo.nom_partie="Partie de";
     mesinfo.adr_hote=sf::IpAddress::getLocalAddress().toString();
     mesinfo.nb_vie=3;
-    mesinfo.scores=0;
+    mesinfo.scoresj1=0;
+    mesinfo.scoresj2=0;
     mesinfo.pleine=false;
     mesinfo.type_msg="";
     mesinfo.maliste.begin();
@@ -137,4 +138,27 @@ Cadre Client::recupererListePartie(sf::RenderWindow& fenetre) {
         return mon_cadre;
     }
     else return Cadre();
+}
+
+int Client::getScore( int os){
+    sf::Packet packet_connexion;
+    mesinfo.type_msg="SCORES";
+    mesinfo.scoresj1=os;
+    packet_connexion << mesinfo;
+    socket.send(packet_connexion,ip_serveur,port);
+    std::cout<<"Demande de Score"<<std::endl;
+    socket.receive(packet_connexion,ip_serveur,port);
+    Info reception;
+    packet_connexion >> reception;
+    std::cout<<reception.type_msg<<std::endl;
+    if (reception.type_msg == "OK" && reception.adr_hote==sf::IpAddress::getLocalAddress())
+    {
+        std::cout<<"\t Score Reçu"<<std::endl;
+        return reception.scoresj1;
+    }
+    else{
+        std::cout<<"\t Score Reçu"<<std::endl;
+        return reception.scoresj2;
+    }
+
 }

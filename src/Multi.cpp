@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 #include <iostream>
-
 #include "Solo.h"
 #include "Multi.h"
 
@@ -26,6 +25,7 @@ Multi::~Multi() {
 
 void Multi::afficher(sf::RenderWindow& fenetre) {
   sf::Event e;
+    Client mapartie;
   while (fenetre.pollEvent(e)) {
     if (e.type == sf::Event::KeyPressed) {
       if(e.key.code == sf::Keyboard::Escape)
@@ -146,9 +146,10 @@ void Multi::afficher(sf::RenderWindow& fenetre) {
 	std::string scoreString1, scoreString2;
 	std::ostringstream os_score;
 	std::ostringstream os_score_adv;
+    os_score_adv << mapartie.getScore(score);
 	os_score << score;
 	scoreString1 = os_score.str();
-	scoreString2 = os_score.str();
+	scoreString2 = os_score_adv.str();
 	sfScore1.setFont(font);
 	sfScore1.setString(scoreString1);
 	sfScore1.setCharacterSize(20);

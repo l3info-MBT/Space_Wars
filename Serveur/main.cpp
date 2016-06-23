@@ -9,7 +9,8 @@
         std::string type_msg;
         std::string nom_partie;
         std::string adr_hote;
-        int scores;
+        int scoresj1;
+        int scoresj2;
         int nb_vie;
         bool pleine;
     };
@@ -146,8 +147,16 @@ int main()
             }
 
             if(mesinfo.type_msg == "SCORES" )
-            {  
-
+            {
+                if(mesinfo.adr_hote == partie.adr_hote) partie.scoresj1=mesinfo.scorej1;
+                else partie.scoresj2=mesinfo.scorej2;
+                sf::Packet rpacket;
+                std::cout<<"envoie du score à  "<<is_partie<<std::endl;
+                reponse.type_msg ="OK";
+                reponse.scoresj1=partie.scoresj1;
+                reponse.scoresj2=partie.scoresj2;
+                rpacket << reponse;
+                socket.send(rpacket,sender,port);
             }
 
             fichier << genererLog();

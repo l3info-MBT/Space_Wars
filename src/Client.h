@@ -28,7 +28,8 @@ class Client {
         std::string type_msg;
         std::string nom_partie;
         std::string adr_hote;
-        int scores;
+        int scoresj1;
+        int scoresj2;
         int nb_vie;
         bool pleine;
         std::list<Info> maliste;
@@ -36,12 +37,12 @@ class Client {
 
     friend sf::Packet& operator << (sf::Packet& packet, const Client::Info& info)
     {
-        return packet << info.type_msg << info.nom_partie << info.adr_hote << info.scores << info.nb_vie;
+        return packet << info.type_msg << info.nom_partie << info.adr_hote << info.scoresj1 <<info.scoresj2 << info.nb_vie;
     }
 
     friend sf::Packet& operator >> (sf::Packet& packet, Client::Info& info)
     {
-        return packet >> info.type_msg >> info.nom_partie >> info.adr_hote >> info.scores >> info.nb_vie;
+        return packet >> info.type_msg >> info.nom_partie >> info.adr_hote >> info.scoresj1 >> info.scoresj2 >> info.nb_vie;
     }
 
     private:
@@ -63,6 +64,7 @@ class Client {
     Cadre creerUnePartie(sf::RenderWindow& fenetre);
     void rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre);
     void attendre(sf::RenderWindow& fenetre);
+    int getScore(int os);
 };
 
 
