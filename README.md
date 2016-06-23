@@ -25,11 +25,6 @@ Voici une liste non exhaustive des taches qui ont été ou sont encore à accomp
 
 Ce projet est un exercice de fin d'année pour notres licences, nous avons donc plusieurs critères à respecter. Nous sommes donc tenu d'utiliser la bibliothèque multimédia SFML **(Version 2.3.2)** ainsi qu'implémenter une partie réseaux à notre jeu.
 
-
-## Les Régles:
-
-Space Wars est un clone de Space Invaders : un jeu d’arcade. Le principe est de détruire des vagues d’aliens au moyen d’un missile en se déplaçant horizontalement sur l’écran. Ce jeu fait parti des classiques du jeu vidéo au même titre que Pac-Man et d’autres de ses contemporains.
-
 *Les dates du projet sont fixées du 6 Juin au 24 Juin 2016*
 
 ## Les Régles:
