@@ -7,6 +7,7 @@
 #On ignore le dossier Bin et Obj
 bin/
 obj/
+.idea/
 
 #On inclus manuellement nos notes
 !note.txt
