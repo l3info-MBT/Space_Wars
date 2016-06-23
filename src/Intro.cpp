@@ -39,7 +39,7 @@ void Intro::afficher(sf::RenderWindow &fenetre) {
 
     while(m_intro_etat == m_lecture && clock.getElapsedTime().asSeconds() < 3.f)
     {
-        fenetre.clear();
+        fenetre.clear(sf::Color::Black);
 
         fenetre.draw(sprite_intro);
 

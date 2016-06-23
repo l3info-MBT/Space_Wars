@@ -17,6 +17,7 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include "Multi.h"
+#include "Cadre.h"
 
 class Client {
 
@@ -56,9 +57,9 @@ class Client {
     unsigned short int getPort () const {return port;};
     unsigned short int setPort (unsigned short int p_port);
     const std::string getIp() const { return ip.toString();};
-    void recupererListePartie() ;
+    Cadre recupererListePartie() ;
     void seConnecter();
-    void creerUnePartie(sf::RenderWindow& fenetre);
+    Cadre creerUnePartie();
     void rejoindreUnePartie(sf::RenderWindow& fenetre);
 };
 

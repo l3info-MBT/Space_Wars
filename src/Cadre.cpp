@@ -2,8 +2,8 @@
 #include "Cadre.h"
 
 Cadre::Cadre(){
-    cpt_cadre++;
     nbcadre = cpt_cadre;
+    cpt_cadre++;
     type="OUVERT";
     nom_reseaux ="EXEMPLE";
     etat_partie ="Partie de test";
@@ -15,16 +15,16 @@ Cadre::~Cadre(){
 
 Cadre::Cadre(std::string ptype){
     type=ptype;
-    cpt_cadre++;
     nbcadre = cpt_cadre;
+    cpt_cadre++;
     type="FERMER";
     nom_reseaux="Partie Indisponnible";
     etat_partie="Ce slot est Ferme";
     nbplace=0;
 }
 Cadre::Cadre (std::string ptype,std::string pnom_reseaux,std::string petat_partie){
-    cpt_cadre++;
     nbcadre = cpt_cadre;
+    cpt_cadre++;
     type=ptype;
     nom_reseaux=pnom_reseaux;
     etat_partie=petat_partie;
@@ -95,4 +95,4 @@ void Cadre::afficher_cadre(sf::RenderWindow& fenetre){
     fenetre.draw(status);
 }
 
-int Cadre::cpt_cadre=-1;
+int Cadre::cpt_cadre=0;

@@ -23,9 +23,11 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
     Client monclient;
     monclient.seConnecter();
     Cadre mon_cadre = monclient.recupererListePartie();
-
-    Cadre mon_cadre2("FERMER");
-    Cadre mon_cadre3("FERMER");
+    std::cout<<mon_cadre.getNbCadre()<<std::endl;
+    //Cadre mon_cadre2("FERMER");
+    //std::cout<<mon_cadre2.getNbCadre()<<std::endl;
+    //Cadre mon_cadre3("FERMER");
+    //std::cout<<mon_cadre3.getNbCadre()<<std::endl;
 
     sf::Texture fond;
     if(!fond.loadFromFile("ressource/fond.png")){
@@ -189,8 +191,8 @@ void Reseau::afficher(sf::RenderWindow& fenetre) {
             }
         }
         mon_cadre.afficher_cadre(fenetre);
-        mon_cadre2.afficher_cadre(fenetre);
-        mon_cadre3.afficher_cadre(fenetre);
+        //mon_cadre2.afficher_cadre(fenetre);
+        //mon_cadre3.afficher_cadre(fenetre);
         fenetre.draw(cadre_select);
         fenetre.draw(Creer);
         fenetre.draw(Retour);

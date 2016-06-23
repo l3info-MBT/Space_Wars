@@ -14,7 +14,7 @@ Client::Client(){
     setPort(55002);
     socket.bind(port);
     sf::Packet packet;
-    ip_serveur = "192.168.0.20";
+    ip_serveur = "192.168.51.120";
     mesinfo.nom_partie="Partie de";
     mesinfo.adr_hote=sf::IpAddress::getLocalAddress().toString();
     mesinfo.nb_vie=3;
@@ -46,7 +46,7 @@ void Client::seConnecter(){
     if (reception.type_msg == "OK") std::cout<<"\tConnexion prise en compte"<<std::endl;
 }
 
-void Client::creerUnePartie(sf::RenderWindow &fenetre){
+Cadre Client::creerUnePartie(){
     sf::Packet packet_connexion;
     mesinfo.type_msg="CREER";
     packet_connexion << mesinfo;
@@ -55,16 +55,24 @@ void Client::creerUnePartie(sf::RenderWindow &fenetre){
     socket.receive(packet_connexion,ip_serveur,port);
     Info reception;
     packet_connexion >> reception;
-    do {
-        if (reception.type_msg == "OK") std::cout<<"Création de partie prise en compte"<<std::endl;
-        socket.receive(packet_connexion,ip_serveur,port);
-        packet_connexion >> reception;
-        std::cout<<"Attente d'un autre adversaire"<<std::endl;
-    }while(reception.type_msg !="TROUVE");
-    Multi partie;
-    partie.afficher(fenetre);
+    if (reception.type_msg == "REPONSE"){
+         std::cout<<"\tCréation de partie prise en compte"<<std::endl;
+        std::cout<<reception.type_msg<<std::endl;
+        std::cout<<reception.nom_partie<<std::endl;
+        std::cout<<reception.adr_hote<<std::endl;
+        Cadre mon_cadre("OUVERT",reception.nom_partie,reception.adr_hote);
+        return mon_cadre;
+    }
+    else {
+        std::cout<<"\tUne Erreur est survenue"<<std::endl;
+        std::cout<<reception.type_msg<<std::endl;
+        std::cout<<reception.nom_partie<<std::endl;
+        std::cout<<reception.adr_hote<<std::endl;
+        Cadre mon_cadre("Ferme",reception.nom_partie,reception.adr_hote);
+        return mon_cadre;
+    }
 }
-void Client::rejoindreUnePartie(sf::RenderWindow &fenetre){
+void Client::rejoindreUnePartie(sf::RenderWindow& fenetre){
     sf::Packet packet_connexion;
     mesinfo.type_msg="REJOINDRE";
     packet_connexion << mesinfo;
@@ -81,11 +89,11 @@ void Client::rejoindreUnePartie(sf::RenderWindow &fenetre){
     }
     else{
         std::cout<<"Aucune partie n'est disponnible création d'une partie"<<std::endl;
-        creerUnePartie(fenetre);
+        creerUnePartie();
     }
 
 }
-void Client::recupererListePartie() {
+Cadre Client::recupererListePartie() {
     sf::Packet packet_connexion;
     mesinfo.type_msg="LISTE";
     packet_connexion << mesinfo;
@@ -94,9 +102,14 @@ void Client::recupererListePartie() {
     socket.receive(packet_connexion,ip_serveur,port);
     Info reception;
     packet_connexion >> reception;
-    if (reception.type_msg == "OK"){
-        std::cout<<"\tRécupération de la liste des parties"<<std::endl;
-        mesinfo.maliste = reception.maliste;
-        if (mesinfo.maliste.size())std::cout<<"la liste n'est pas vide"<<std::endl;
+    std::cout<<reception.type_msg<<std::endl;
+    if (reception.type_msg=="NON"){
+        return creerUnePartie();
     }
+    else if (reception.type_msg == "OK"){
+        std::cout<<"\tRécupération de la liste des parties"<<std::endl;
+        Cadre mon_cadre("OUVERT",reception.nom_partie,reception.adr_hote);
+        return mon_cadre;
+    }
+    else return Cadre();
 }

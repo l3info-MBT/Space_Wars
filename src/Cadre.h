@@ -30,6 +30,7 @@ class Cadre {
         std::string getType() const { return type; };
         std::string getNomReseau() const { return nom_reseaux; };
         std::string getEtatPartie() const { return etat_partie; };
+        int getNbCadre() const { return cpt_cadre;};
         int getNbPlace() const { return nbplace; };
 
         void setType(std::string p_type);
