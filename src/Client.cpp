@@ -104,6 +104,7 @@ void Client::rejoindreUnePartie(Cadre mon_cadre, sf::RenderWindow& fenetre){
     socket.receive(packet_connexion,ip_serveur,port);
     Info reception;
     packet_connexion >> reception;
+    std::cout<<reception.type_msg<<std::endl;
     if (reception.type_msg == "OK")
     {
         std::cout<<"Une partie a été trouvée"<<std::endl;

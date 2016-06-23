@@ -97,17 +97,19 @@ int main()
                 std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
             }
 
+
             if(mesinfo.type_msg == "REJOINDRE" )
-            {   
-                sf::Packet rpacket;
+            {
                 std::cout<<"Le client "<<sender.toString()<<" recherche une partie"<<std::endl;
-                if (mesinfo.adr_hote == partie.adr_hote){
+                if (mesinfo.adr_hote != partie.adr_hote){
+                    sf::Packet rpacket;
                     reponse.type_msg = "OK";
                     socket.send(rpacket,sender,port);
                     socket.send(rpacket,reponse.adr_hote,port);
                 }
                 else
-                {   
+                {
+                    sf::Packet rpacket;
                     reponse.type_msg = "NON";
                     socket.send(rpacket,sender,port);
                     std::cout<<"La partie n'existe pas"<<std::endl;
