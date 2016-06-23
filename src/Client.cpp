@@ -11,7 +11,7 @@
 #include "Client.h"
 
 Client::Client(){
-    setPort(55003);
+    setPort(55002);
     unsigned short int pport = getPort() + 1;
     while(!socket.bind(port))
     {
