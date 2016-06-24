@@ -25,11 +25,11 @@ std::string genererLog()
 
     //surcharge des operateurs
     sf::Packet& operator <<(sf::Packet& packet, const Info& info){
-        return packet << info.type_msg << info.nom_partie << info.adr_hote << info.scores << info.nb_vie;
+        return packet << info.type_msg << info.nom_partie << info.adr_hote << info.scoresj1 << info.scoresj2 << info.nb_vie;
     }
 
     sf::Packet& operator >>(sf::Packet& packet, Info& info){
-        return packet >> info.type_msg >> info.nom_partie >> info.adr_hote >> info.scores >> info.nb_vie;
+        return packet >> info.type_msg >> info.nom_partie >> info.adr_hote >> info.scoresj1 >> info.scoresj2 >> info.nb_vie;
     }
 
 int main()
@@ -87,7 +87,7 @@ int main()
                 std::string ip = sender.toString();
                 reponse.nom_partie= "Partie de " + ip;
                 reponse.pleine = false;
-                reponse.adr_hote = ip  ;
+                reponse.adr_hote = ip   ;
                 partie.nom_partie= "Partie de " + ip;
                 partie.pleine = false;
                 partie.adr_hote = ip   ;
@@ -98,23 +98,17 @@ int main()
                 std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
             }
 
-
             if(mesinfo.type_msg == "REJOINDRE" )
-            {
+            {   
                 std::cout<<"Le client "<<sender.toString()<<" recherche une partie"<<std::endl;
-                if (is_partie)
-				{
+                if (mesinfo.adr_hote != partie.adr_hote){
                     sf::Packet rpacket;
-                    reponse.type_msg ="OK";
-                    reponse.nom_partie= partie.nom_partie;
-					reponse.pleine = true;
-					reponse.adr_hote = partie.adr_hote;
-                    rpacket << reponse;
+                    reponse.type_msg = "OK";
                     socket.send(rpacket,sender,port);
-                    socket.send(rpacket,partie.adr_hote,port);
+                    socket.send(rpacket,reponse.adr_hote,port);
                 }
                 else
-                {
+                {   
                     sf::Packet rpacket;
                     reponse.type_msg = "NON";
                     socket.send(rpacket,sender,port);
@@ -147,16 +141,14 @@ int main()
             }
 
             if(mesinfo.type_msg == "SCORES" )
-            {
-                if(mesinfo.adr_hote == partie.adr_hote) partie.scoresj1=mesinfo.scorej1;
-                else partie.scoresj2=mesinfo.scorej2;
-                sf::Packet rpacket;
-                std::cout<<"envoie du score à  "<<is_partie<<std::endl;
-                reponse.type_msg ="OK";
-                reponse.scoresj1=partie.scoresj1;
-                reponse.scoresj2=partie.scoresj2;
+            {  
+                sf::Packet rpacket;   
+                std::cout<<"Envoie des scores à :"<< sender.toString()<< std::endl;
+                reponse.type_msg = "OK";
                 rpacket << reponse;
                 socket.send(rpacket,sender,port);
+                std::cout<<reponse.type_msg<<std::endl;
+                std::cout<<"\t Envoie d'une réponse à "<<sender.toString()<<std::endl;
             }
 
             fichier << genererLog();
